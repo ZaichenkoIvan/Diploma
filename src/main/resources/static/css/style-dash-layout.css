@@ -3,12 +3,18 @@
 Primary style
 
 -------------------------------- */
-* {
-    font-family: "Roboto" !important;
+@import url('https://fonts.googleapis.com/css?family=Jura&display=swap');
+
+.table-sm {
+    margin: auto;
 }
 
 *, *::after, *::before {
   box-sizing: border-box;
+}
+
+a {
+    text-decoration: none !important;
 }
 
 html {
@@ -18,9 +24,9 @@ html {
 body {
   font-size: 1.6rem;
   line-height: 1.6;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Jura", sans-serif !important;
   color: #3e454c;
-  background-color: #e7e7e7 !important;
+  background-color: #e6fff3 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -36,7 +42,6 @@ a {
 }
 
 input {
-  font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
 }
 
@@ -674,6 +679,7 @@ Navigation Sidebar
     padding: 1em 1em 1em 42px;
     text-align: left;
     border-bottom: none;
+    text-decoration: none;
   }
   .cd-side-nav > ul > li > a::before {
     top: 50%;
@@ -1288,7 +1294,6 @@ cd-form {
   display: block;
 }
 .cd-form input, .cd-form textarea, .cd-form select, .cd-form label {
-  font-family: "Open Sans", sans-serif;
   font-size: 1.5rem;
   color: #2b3e51;
 }
@@ -1970,7 +1975,6 @@ Error
     margin-bottom: 50px;
     font-weight: 400;
     font-size: 20px;
-    font-family: 'Open Sans', sans-serif;
     , sans-serif;
     position: fixed;
     width: 100%;
@@ -2015,7 +2019,6 @@ Error
     font-size: 450%;
     padding: 0 20px;
     border-radius: 5px;
-    font-family: 'Roboto', sans-serif;
     ,  sans-serif;
     font-weight: bolder;
     transition: all .5s;
@@ -2271,10 +2274,10 @@ table td:before {
   }
 } */
 
-div.material-table {
+.material-table {
   padding: 0;
-  	overflow-y: auto !important;
-	overflow: auto !important;
+  overflow-y: auto !important;
+  overflow: auto !important;
 }
 
 div.material-table .hiddensearch {
@@ -2297,15 +2300,22 @@ div.material-table .hiddensearch input:active {
 div.material-table table {
   /* table-layout: fixed; */
   width:100%;
-  
   table-layout: auto !important;
-    border-collapse: collapse !important;
-    width: 100% !important;
-    
+  border-collapse: collapse !important;
+  width: auto !important;
+    margin: auto;
     overflow-y: auto !important;
 	overflow: auto !important;
-    
 }
+
+div.material-table table tr td, th {
+    text-align: center !important;
+}
+
+div.material-table table td, th {
+    padding: 0 15px !important;
+}
+
 
 div.material-table .table-header {
   height: 64px;

@@ -21,4 +21,5 @@ public class ViewInterceptorAdapter extends HandlerInterceptorAdapter {
             modelAndView.addObject("g_account", accountService.getLoggedInAccount());
         }
     }
+
 }
