@@ -1,10 +1,6 @@
 package com.yadro.web.rooms.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -23,7 +19,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Account {
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
     
@@ -59,7 +55,7 @@ public class Account {
     private int countEvent=0;
     
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private University university;
     
     public Boolean isAdmin() {
