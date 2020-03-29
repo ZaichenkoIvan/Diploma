@@ -57,7 +57,7 @@ Main components
 header[role=banner] {
   position: relative;
   height: 50px;
-  background: #572AA7;
+  background: #006600;
 }
 header[role=banner] #cd-logo {
   float: left;
@@ -355,7 +355,7 @@ sigin/signup popup
 .cd-form input[type=submit] {
   padding: 16px 0;
   cursor: pointer;
-  background: #572AA7;
+  background: #006600;
   color: #FFF;
   font-weight: bold;
   border: none;
@@ -2066,3 +2066,6 @@ Video
   }
 }
 
+.content-wrapper-special {
+    margin: 0!important;
+}

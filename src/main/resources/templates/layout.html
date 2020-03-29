@@ -46,9 +46,9 @@
 	</head>
 	
 	<body>
-    	<header class="cd-main-header">
+    	<header class="navbar navbar-expand-lg main-navbar">
 			<a href="#0" class="cd-logo"><img th:src="@{/assets/img-dashlogo.svg}" alt="Logo" /></a>
-		
+
 			<!-- <div class="cd-search is-hidden">
 				<form action="#0">
 					<input type="search" placeholder="Search..." />
@@ -56,6 +56,99 @@
 			</div> --> <!-- cd-search -->
 
 			<a href="#0" class="cd-nav-trigger">Menu<span></span></a> <!-- mobile -->
+
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav">
+<!--					<li class="nav-item cd-label">Main</li>-->
+					<li class="nav-item overview" th:classappend="${#httpServletRequest.requestURI=='/'}? active" >
+						<a th:href="@{/}" href="/" class="nav-link">Greeting</a>
+					</li>
+					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/book/stadium/'}? active" >
+						<a th:href="@{/book/stadium/}" href="/book/stadium/" class="nav-link">Booking</a>
+					</li>
+					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/'}? active" >
+						<a th:href="@{/event/list/}" href="/event/list/" class="nav-link">History of booking</a>
+					</li>
+				</ul>
+
+				<ul class="navbar-nav">
+<!--					<li class="cd-label" sec:authorize="hasRole('ROLE_ADMIN')">Menu admin</li>-->
+
+					<li class="nav-item has-children users" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" class="nav-link">Users</a>
+
+						<ul>
+							<li th:class="${#httpServletRequest.requestURI=='/account/list'}? active"><a th:href="@{/account/list}" href="account/list">All Users</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/account/register'}? active"><a th:href="@{/account/register}" href="account/register">Add User</a></li>
+						</ul>
+					</li>
+					<li class="nav-item has-children universities" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" class="nav-link">Universities</a>
+
+						<ul>
+							<li th:class="${#httpServletRequest.requestURI=='/university/list'}? active"><a th:href="@{/university/list}" href="university/list">All Universities</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/university/add'}? active"><a th:href="@{/university/add}" href="university/add">Add Universities</a></li>
+						</ul>
+					</li>
+					<li class="nav-item has-children stadium" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" class="nav-link">Stadium</a>
+
+						<ul>
+							<li th:class="${#httpServletRequest.requestURI=='/stadium/list'}? active"><a th:href="@{/stadium/list}" href="stadium/list">All Stadiums</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/stadium/add'}? active"><a th:href="@{/stadium/add}" href="stadium/add">Add Stadiums</a></li>
+						</ul>
+					</li>
+					<li class="nav-item has-children pitches" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" class="nav-link">Pitch</a>
+
+						<ul>
+							<li th:class="${#httpServletRequest.requestURI=='/pitch/list'}? active"><a th:href="@{/pitch/list}" href="pitch/list">All Pitches</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/pitch/add'}? active"><a th:href="@{/pitch/add}" href="pitch/add">Add Pitch</a></li>
+						</ul>
+					</li>
+					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/all/'}? active"  sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/event/list/all/}" href="/event/list/all/" class="nav-link">All Reservations</a>
+					</li>
+				</ul>
+
+<!--				<ul class="navbar-nav">-->
+<!--					<li class="cd-label">Shortcuts</li>-->
+<!--					<li class="action-btn"><a th:href="@{/logout}" href="logout">Logout</a></li>-->
+<!--					<li class="action-btn" ><a id="clocktext" style="font-size:10pt; font-kerning:none; background: #00FF00; color: #585b63; pointer-events: none;"></a></li>-->
+<!--					<script type="text/javascript">-->
+<!--						"use strict";-->
+
+<!--						var textElem = document.getElementById("clocktext");-->
+<!--						var textNode = document.createTextNode("");-->
+<!--						textElem.appendChild(textNode);-->
+<!--						var curFontSize = 24;  // Do not change-->
+
+<!--						function updateClock() {-->
+<!--							var d = new Date();-->
+<!--							var s = "";-->
+<!--							s += (10 > d.getHours  () ? "0" : "") + d.getHours  () + ":";-->
+<!--							s += (10 > d.getMinutes() ? "0" : "") + d.getMinutes() + ":";-->
+<!--							s += (10 > d.getSeconds() ? "0" : "") + d.getSeconds();-->
+<!--							textNode.data = s;-->
+<!--							setTimeout(updateClock, 1000 - d.getTime() % 1000 + 20);-->
+<!--						}-->
+
+<!--						function updateTextSize() {-->
+<!--							var targetWidth = 0.9;  // Proportion of full screen width-->
+<!--							for (var i = 0; 3 > i; i++) {  // Iterate for better better convergence-->
+<!--								var newFontSize = textElem.parentNode.offsetWidth * targetWidth / textElem.offsetWidth * curFontSize;-->
+<!--								textElem.style.fontSize = newFontSize.toFixed(3) + "pt";-->
+<!--								curFontSize = newFontSize;-->
+<!--							}-->
+<!--						}-->
+
+<!--						updateClock();-->
+<!--						/* updateTextSize();-->
+<!--						window.addEventListener("resize", updateTextSize); */-->
+<!--					</script>-->
+<!--				</ul>-->
+
+			</div>
 
 			<nav class="cd-nav">
 				<ul class="cd-top-nav">
@@ -75,100 +168,8 @@
 		</header> <!-- .cd-main-header -->
 
 		<main class="cd-main-content">
-			<nav class="cd-side-nav">
-				<ul>
-					<li class="cd-label">Main</li>
-					<li class="overview" th:classappend="${#httpServletRequest.requestURI=='/'}? active" >
-						<a th:href="@{/}" href="/">Greeting</a>
-					</li>
-					<li class="bookmarks" th:classappend="${#httpServletRequest.requestURI=='/book/stadium/'}? active" >
-						<a th:href="@{/book/stadium/}" href="/book/stadium/">Booking</a>
-					</li>
-					<li class="bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/'}? active" >
-						<a th:href="@{/event/list/}" href="/event/list/">History of booking</a>
-					</li>
 
-				</ul>
-                
-                <ul>
-					<li class="cd-label" sec:authorize="hasRole('ROLE_ADMIN')">Menu admin</li>
-					
-					<li class="has-children users" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#">Users</a>
-					
-						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/account/list'}? active"><a th:href="@{/account/list}" href="account/list">All Users</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/account/register'}? active"><a th:href="@{/account/register}" href="account/register">Add User</a></li>
-						</ul>
-					</li>
-					<li class="has-children users" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#">Universities</a>
-					
-						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/university/list'}? active"><a th:href="@{/university/list}" href="university/list">All Universities</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/university/add'}? active"><a th:href="@{/university/add}" href="university/add">Add Universities</a></li>
-						</ul>
-					</li>
-					<li class="has-children bookmarks" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#">Stadium</a>
-					
-						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/stadium/list'}? active"><a th:href="@{/stadium/list}" href="stadium/list">All Stadiums</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/stadium/add'}? active"><a th:href="@{/stadium/add}" href="stadium/add">Add Stadiums</a></li>
-						</ul>
-					</li>
-					<li class="has-children bookmarks" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#">Pitch</a>
-					
-						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/pitch/list'}? active"><a th:href="@{/pitch/list}" href="pitch/list">All Pitches</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/pitch/add'}? active"><a th:href="@{/pitch/add}" href="pitch/add">Add Pitch</a></li>
-						</ul>
-					</li>
-					<li class="bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/all/'}? active"  sec:authorize="hasRole('ROLE_ADMIN')">
-						<a th:href="@{/event/list/all/}" href="/event/list/all/">All Reservations</a>
-					</li>
-				</ul>
 
-				<ul>
-					<li class="cd-label">Shortcuts</li>
-					<li class="action-btn"><a th:href="@{/logout}" href="logout">Logout</a></li>
-					<li class="action-btn" ><a id="clocktext" style="font-size:10pt; font-kerning:none; background: #00FF00; color: #585b63; pointer-events: none;"></a></li>
-					<script type="text/javascript">
-						"use strict";
-			
-						var textElem = document.getElementById("clocktext");
-						var textNode = document.createTextNode("");
-						textElem.appendChild(textNode);
-						var curFontSize = 24;  // Do not change
-		
-						function updateClock() {
-							var d = new Date();
-							var s = "";
-							s += (10 > d.getHours  () ? "0" : "") + d.getHours  () + ":";
-							s += (10 > d.getMinutes() ? "0" : "") + d.getMinutes() + ":";
-							s += (10 > d.getSeconds() ? "0" : "") + d.getSeconds();
-							textNode.data = s;
-							setTimeout(updateClock, 1000 - d.getTime() % 1000 + 20);
-						}
-			
-						function updateTextSize() {
-							var targetWidth = 0.9;  // Proportion of full screen width
-							for (var i = 0; 3 > i; i++) {  // Iterate for better better convergence
-								var newFontSize = textElem.parentNode.offsetWidth * targetWidth / textElem.offsetWidth * curFontSize;
-								textElem.style.fontSize = newFontSize.toFixed(3) + "pt";
-								curFontSize = newFontSize;
-							}
-						}
-			
-						updateClock();
-						/* updateTextSize();
-						window.addEventListener("resize", updateTextSize); */
-					</script>
-				</ul>
-
-			</nav>
-			
 			<div layout:fragment="content" class="content-wrapper">
 				<!-- Content goes here -->
 			</div>

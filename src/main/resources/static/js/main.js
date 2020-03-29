@@ -209,11 +209,14 @@ jQuery(document).ready(function(){
 		sidebarTrigger = $('.cd-nav-trigger'),
 		topNavigation = $('.cd-top-nav'),
 		searchForm = $('.cd-search'),
-		accountInfo = $('.account');
+		accountInfo = $('.account'),
+		dropdownMenuElements = [$('.account'), $('.users'), $('.universities'), $('.stadium'), $('.pitches')];
 
 	//on resize, move search and top nav position according to window width
 	var resizing = false;
 	moveNavigation();
+	addOpenDropdownMenuHandlers(dropdownMenuElements);
+
 	$(window).on('resize', function(){
 		if( !resizing ) {
 			(!window.requestAnimationFrame) ? setTimeout(moveNavigation, 300) : window.requestAnimationFrame(moveNavigation);
@@ -253,16 +256,36 @@ jQuery(document).ready(function(){
 		}
 	});
 
+
+     function addOpenDropdownMenuHandler(item) {
+        item.children('a').on('click', function(event) {
+            var mq = checkMQ(),
+                selectedItem = $(this);
+            if( mq == 'desktop') {
+                event.preventDefault();
+                item.toggleClass('selected');
+                sidebar.find('.has-children.selected').removeClass('selected');
+            }
+        });
+     }
+
+     function addOpenDropdownMenuHandlers(items) {
+        items.forEach(item => {
+            addOpenDropdownMenuHandler(item);
+        })
+     }
+
+
 	//click on account and show submenu - desktop version only
-	accountInfo.children('a').on('click', function(event){
-		var mq = checkMQ(),
-			selectedItem = $(this);
-		if( mq == 'desktop') {
-			event.preventDefault();
-			accountInfo.toggleClass('selected');
-			sidebar.find('.has-children.selected').removeClass('selected');
-		}
-	});
+//	accountInfo.children('a').on('click', function(event){
+//		var mq = checkMQ(),
+//			selectedItem = $(this);
+//		if( mq == 'desktop') {
+//			event.preventDefault();
+//			accountInfo.toggleClass('selected');
+//			sidebar.find('.has-children.selected').removeClass('selected');
+//		}
+//	});
 
 	$(document).on('click', function(event){
 		if( !$(event.target).is('.has-children a') ) {
