@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.yadro.web.rooms.app.model.Pitch;
-import com.yadro.web.rooms.app.model.Stadium;
+import com.yadro.web.rooms.app.model.Room;
+import com.yadro.web.rooms.app.model.Hostel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +24,8 @@ import com.yadro.web.rooms.app.model.Account;
 import com.yadro.web.rooms.app.model.Event;
 import com.yadro.web.rooms.app.service.AccountService;
 import com.yadro.web.rooms.app.service.EventService;
-import com.yadro.web.rooms.app.service.PitchService;
-import com.yadro.web.rooms.app.service.StadiumService;
+import com.yadro.web.rooms.app.service.RoomService;
+import com.yadro.web.rooms.app.service.HostelService;
 
 @Controller
 public class EventController {
@@ -37,10 +37,10 @@ public class EventController {
 	AccountService accountService;
 	
 	@Autowired
-	private PitchService pitchService;
+	private RoomService roomService;
 	
 	@Autowired
-	private StadiumService stadiumService;
+	private HostelService hostelService;
 	
 	@RequestMapping(value="/calendar/addevent", method=RequestMethod.POST)
 	public @ResponseBody Event addEvent(@RequestBody Event event, BindingResult result) {
@@ -73,8 +73,8 @@ public class EventController {
 	@RequestMapping(value="/calendar/events", method=RequestMethod.GET)
 	public @ResponseBody List<Event> getEventsInRange(	@RequestParam(value = "start", required = true) String start, 
 														@RequestParam(value = "end", required = true) String end,
-														@RequestParam(value = "pitch", required = true) String pitch) {
-		List<Event> events = eventService.findByDatesBetween(start, end, pitch);
+														@RequestParam(value = "room", required = true) String room) {
+		List<Event> events = eventService.findByDatesBetween(start, end, room);
 		
 		return clearAccount(events); 
 	}	
@@ -157,11 +157,11 @@ public class EventController {
 	}
 	
 	@RequestMapping(value="/event/edit/{id}", method=RequestMethod.GET)
-	public String pitch(@PathVariable("id") Long id, Model model) {
+	public String room(@PathVariable("id") Long id, Model model) {
 		Account a = accountService.getLoggedInAccount();
 		Event e = this.eventService.findById(id);
 		if (a.getId().equals(e.getAccount().getId()) || a.isAdmin()) {
-			model.addAttribute("pitch", e.getPitch());
+			model.addAttribute("room", e.getRoom());
 			model.addAttribute("evente", this.eventService.findById(id));
 			return "/event/calendar";
 		} else{
@@ -206,36 +206,36 @@ public class EventController {
 		return content;
 	}
 	
-	@RequestMapping("/book/stadium")
+	@RequestMapping("/book/hostel")
 	public String bookUniversity(Model model) {
 		Account a = accountService.getLoggedInAccount();
-        model.addAttribute("stadiums", stadiumService.listTable(a.getUniversity()));
-		return "book/stadium";
+        model.addAttribute("hostels", hostelService.listTable(a.getUniversity()));
+		return "book/hostel";
 	}
 	
-	@RequestMapping("/book/stadium/{id}")
-	public String bookStadium(@PathVariable("id") Long id, Model model) {
+	@RequestMapping("/book/hostel/{id}")
+	public String bookHostel(@PathVariable("id") Long id, Model model) {
 		Account a = accountService.getLoggedInAccount();
-		List<Stadium> availableStadiums = stadiumService.universityStadiumList(a.getUniversity());
-		for (Stadium u : availableStadiums){
+		List<Hostel> availableHostels = hostelService.universityHostelList(a.getUniversity());
+		for (Hostel u : availableHostels){
 			if(u.getId().equals(id)){
-				model.addAttribute("stadiumId", id);
-				model.addAttribute("pitches", pitchService.listTable(u.getId()));
+				model.addAttribute("hostelId", id);
+				model.addAttribute("rooms", roomService.listTable(u.getId()));
 			}
 		}
-	   return "/book/pitch";
+	   return "/book/room";
 	}
 	
 	
-	@RequestMapping(value= "/book/pitch/{id}", method=RequestMethod.GET)
-	public String bookPitch(@PathVariable("id") Long id, Model model) {
+	@RequestMapping(value= "/book/room/{id}", method=RequestMethod.GET)
+	public String bookRoom(@PathVariable("id") Long id, Model model) {
 		Account a = accountService.getLoggedInAccount();
-		List<Stadium> availableStadiums = stadiumService.universityStadiumList(a.getUniversity());
-		for (Stadium u : availableStadiums) {
-			List<Pitch> availablePitches = pitchService.pitchStadiumList(u);
-			for (Pitch r : availablePitches) {
+		List<Hostel> availableHostels = hostelService.universityHostelList(a.getUniversity());
+		for (Hostel u : availableHostels) {
+			List<Room> availableRooms = roomService.roomHostelList(u);
+			for (Room r : availableRooms) {
 				if (r.getId().equals(id)) {
-					model.addAttribute("pitch", pitchService.findById(id));
+					model.addAttribute("room", roomService.findById(id));
 				}
 			}
 		}
@@ -243,17 +243,17 @@ public class EventController {
 	}
 	
 	
-	@RequestMapping("/calendar/pitch")
+	@RequestMapping("/calendar/room")
 	public String checkUniversity(Model model) {
-        model.addAttribute("pitches", pitchService.listTablePublic("KPI"));
-		return "pitch";
+        model.addAttribute("rooms", roomService.listTablePublic("KPI"));
+		return "room";
 	}
 	
-	@RequestMapping(value= "/calendar/pitch/{id}", method=RequestMethod.GET)
-	public String checkPitch(@PathVariable("id") Long id, Model model) {
-		Pitch r = pitchService.findById(id);
-		if(r.getStadium().getUniversity().getName().startsWith("KPI")) {
-					model.addAttribute("pitch", r);
+	@RequestMapping(value= "/calendar/room/{id}", method=RequestMethod.GET)
+	public String checkRooms(@PathVariable("id") Long id, Model model) {
+		Room r = roomService.findById(id);
+		if(r.getHostel().getUniversity().getName().startsWith("KPI")) {
+					model.addAttribute("room", r);
 		}
 		return "/calendar/calendar";
 	}

@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Pitch {
+public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
@@ -41,6 +41,6 @@ public class Pitch {
        
     @ManyToOne
     @NotNull
-    private Stadium stadium;
+    private Hostel hostel;
     
 }

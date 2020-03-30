@@ -210,7 +210,7 @@ jQuery(document).ready(function(){
 		topNavigation = $('.cd-top-nav'),
 		searchForm = $('.cd-search'),
 		accountInfo = $('.account'),
-		dropdownMenuElements = [$('.account'), $('.users'), $('.universities'), $('.stadium'), $('.pitches')];
+		dropdownMenuElements = [$('.account'), $('.users'), $('.universities'), $('.hostels'), $('.rooms')];
 
 	//on resize, move search and top nav position according to window width
 	var resizing = false;

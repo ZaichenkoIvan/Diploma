@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="#" layout:decorator="layout">
 	<head>
-		<title>Yadro - List stadiums</title>
+		<title>Yadro - List rooms</title>
 		
 		<!-- MATERIALIZE SCRIPT -->	
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
@@ -12,8 +12,8 @@
 		<script th:inline="javascript">
 			/*<![CDATA[*/
 				$(document).ready(function() {
-					$('#datatable-stadiums').dataTable({
-						"data": /*[[${stadiums}]]*/,
+					  $('#datatable-rooms').dataTable({
+						"data": /*[[${rooms}]]*/,
 					    "oLanguage": {
 					      "sStripClasses": "",
 					      "sSearch": "",
@@ -41,28 +41,35 @@
 			<main class="cd-main-content-home" style="padding: 15px 15px 15px 15px !important">
         		<div class="card material-table">
       				<div class="table-header">
-       					<span class="table-title">All stadiums</span>
+       					<span class="table-title">All rooms</span>
        					<div class="actions">
-       						<a th:href="@{/stadium/list/export}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">import_export</i></a>
-          					<a th:href="@{/stadium/add}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">home</i></a>
+       						<a th:href="@{/room/list/export}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">import_export</i></a>
+          					<a th:href="@{/room/add}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">home</i></a>
           					<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
         				</div>
       				</div>
       				<div class="mt-5">
-	     				<table id="datatable-stadiums"
+	     				<table id="datatable-rooms"
 							   class="table-striped table-responsive-lg table-bordered table-sm table-hover shadow rounded text-center"
 						>
 	        				<thead>
 	       						<tr>
 	       							<th style="color:#ffffff !important"></th>
 	           						<th>Name</th>  
-									<th>University</th>
-									<th>Rooms</th> 					
+	           						<th>Hostel</th>
+									<th>Balls</th>
+	            					<th>Manishs</th>
+	            					<th>Grass</th>
+	            					<th>Projector</th>
+	            					<th>Changing room</th>
+	            					<th>Shower</th>
+	            					<th>WC</th>
+	            					<th>Event</th>
 	            					<th style="color:#ffffff !important"></th>
 	          					</tr>
 	       	 				</thead>
-	      				</table>
-      				</div>				
+	      				</table>	
+      				</div>			
     			</div>
         	</main>
         	

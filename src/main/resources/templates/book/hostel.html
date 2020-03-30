@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="#" layout:decorator="layout">
 	<head>
-		<title>Yadro - choose available stadium</title>
+		<title>Yadro - choose available hostel</title>
 		
 		<!-- MATERIALIZE SCRIPT -->	
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
@@ -12,8 +12,8 @@
 		<script th:inline="javascript">
 			/*<![CDATA[*/
 				$(document).ready(function() {
-				  $('#datatable-book-stadium').dataTable({
-					"data": /*[[${stadiums}]]*/,
+				  $('#datatable-book-hostel').dataTable({
+					"data": /*[[${hostels}]]*/,
 					"aoColumnDefs": [
 					     { "sWidth": "7%", "aTargets": [0] } // 1 would be the 2nd column
 					 ],
@@ -44,13 +44,13 @@
 			<main class="cd-main-content-home" style="padding: 15px 15px 15px 15px !important">
         		<div class="card material-table">
       				<div class="table-header">
-       					<span class="table-title">Available stadiums</span>
+       					<span class="table-title">Available hostels</span>
        					<div class="actions">
           					<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
         				</div>
       				</div>
       				<div class="mt-5">
-	     				<table id="datatable-book-stadium"
+	     				<table id="datatable-book-hostel"
 							   class="table-striped table-responsive-lg table-bordered table-sm table-hover shadow rounded text-center"
 						>
 	        				<thead>

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import com.yadro.web.rooms.app.model.Stadium;
+import com.yadro.web.rooms.app.model.Hostel;
 import com.yadro.web.rooms.app.model.University;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,28 +23,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yadro.web.rooms.app.service.UniversityService;
-import com.yadro.web.rooms.app.service.StadiumService;
+import com.yadro.web.rooms.app.service.HostelService;
 
 @Controller
-public class StadiumController {
+public class HostelController {
 	
-	private Logger log = LoggerFactory.getLogger(StadiumController.class);
+	private Logger log = LoggerFactory.getLogger(HostelController.class);
 	
 	@Autowired
-	private StadiumService stadiumService;
+	private HostelService hostelService;
 	
 	@Autowired
 	private UniversityService universityService;
 	
-	@RequestMapping("/stadium/list")
+	@RequestMapping("/hostel/list")
 	public String list(ModelMap map) {
-	   map.addAttribute("stadiums", stadiumService.listTable());
-	   return "stadium/list";
+	   map.addAttribute("hostels", hostelService.listTable());
+	   return "hostel/list";
 	}
 	
-	@RequestMapping(value = "/stadium/list/export")
+	@RequestMapping(value = "/hostel/list/export")
 	public @ResponseBody String listDownload(HttpServletResponse response) {
-		String fileName = "stadiumList.json";
+		String fileName = "hostelList.json";
 		response.setContentType("application/force-download");
 	  response.setHeader("Content-Disposition", "attachment; filename="+fileName);
 	  try {
@@ -53,72 +53,72 @@ public class StadiumController {
 			e.printStackTrace();
 		}
 	  Gson gson = new GsonBuilder().setPrettyPrinting().create();
-	  String content = gson.toJson(stadiumService.listExport());
+	  String content = gson.toJson(hostelService.listExport());
 	  return content;
 	}
 	
-	@RequestMapping(value = "/stadium/add", method = RequestMethod.GET)
-	public String add(Stadium stadium, Model model) {
+	@RequestMapping(value = "/hostel/add", method = RequestMethod.GET)
+	public String add(Hostel hostel, Model model) {
 		List<University> universityList = universityService.list();
 		model.addAttribute("universityList", universityList);
-	   return "/stadium/add";
+	   return "/hostel/add";
 	}
 	
-	@RequestMapping(value = "/stadium/add", method = RequestMethod.POST)
-	public String addPost(@Valid Stadium stadium, BindingResult result, Model model) {
+	@RequestMapping(value = "/hostel/add", method = RequestMethod.POST)
+	public String addPost(@Valid Hostel hostel, BindingResult result, Model model) {
 		List<University> universityList = universityService.list();
 		model.addAttribute("universityList", universityList);
 	   if (result.hasErrors()) {
-	       return "stadium/add";
+	       return "hostel/add";
 	   }
 	   
-	   Stadium registeredStadium = stadiumService.add(stadium);
-	   if (registeredStadium != null) {
-	      return "redirect:/stadium/list";
+	   Hostel registeredHostel = hostelService.add(hostel);
+	   if (registeredHostel != null) {
+	      return "redirect:/hostel/list";
 	   } else {
-	       log.error("Stadium already exists: " + stadium.getName());
+	       log.error("Hostel already exists: " + hostel.getName());
 	       //result.rejectValue("university", "error.alreadyExists", "This university already exists, please try another name.");
-	       return "redirect:/stadium/add" + "?error";
+	       return "redirect:/hostel/add" + "?error";
 	   }
 	}
 	
-	@RequestMapping("/stadium/edit/{id}")
-	public String edit(@PathVariable("id") Long id, Stadium stadium, Model model) {
-		Stadium u = stadiumService.findById(id);
-		stadium.setId(u.getId());
-		stadium.setName(u.getName());
-		stadium.setAddress(u.getAddress());
-		stadium.setUniversity(u.getUniversity());
+	@RequestMapping("/hostel/edit/{id}")
+	public String edit(@PathVariable("id") Long id, Hostel hostel, Model model) {
+		Hostel u = hostelService.findById(id);
+		hostel.setId(u.getId());
+		hostel.setName(u.getName());
+		hostel.setAddress(u.getAddress());
+		hostel.setUniversity(u.getUniversity());
 		
 		List<University> universityList = universityService.list();
 		model.addAttribute("universityList", universityList);
 	   
-	   return "/stadium/edit";
+	   return "/hostel/edit";
 	}
 	
-	@RequestMapping(value = "/stadium/edit", method = RequestMethod.POST)
-	public String editPost(@Valid Stadium stadium, BindingResult result, Model model) {
+	@RequestMapping(value = "/hostel/edit", method = RequestMethod.POST)
+	public String editPost(@Valid Hostel hostel, BindingResult result, Model model) {
 		
 		List<University> universityList = universityService.list();
 		model.addAttribute("universityList", universityList);
 		 
 	   if (result.hasFieldErrors("name")) {
-	       return "/stadium/edit";
+	       return "/hostel/edit";
 	   }
 
-		Stadium uni = stadiumService.update(stadium);
+		Hostel uni = hostelService.update(hostel);
 		
 		if (uni == null) {
-			return "redirect:/stadium/edit/" + stadium.getId() + "?error";
+			return "redirect:/hostel/edit/" + hostel.getId() + "?error";
 		} else {
-			return "redirect:/stadium/edit/" + stadium.getId() + "?updated";
+			return "redirect:/hostel/edit/" + hostel.getId() + "?updated";
 		}
 	}
 	
-	@RequestMapping("/stadium/delete")
+	@RequestMapping("/hostel/delete")
 	public String delete(Long id) {
-		stadiumService.delete(id);
-		return "redirect:/stadium/list";
+		hostelService.delete(id);
+		return "redirect:/hostel/list";
 	}
 	
 }

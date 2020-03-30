@@ -3,8 +3,8 @@ package com.yadro.web.rooms.app.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import com.yadro.web.rooms.app.model.Pitch;
-import com.yadro.web.rooms.app.model.Stadium;
+import com.yadro.web.rooms.app.model.Room;
+import com.yadro.web.rooms.app.model.Hostel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,25 +13,25 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface PitchRepository extends JpaRepository<Pitch, Serializable> {
+public interface RoomRepository extends JpaRepository<Room, Serializable> {
 	
-	Pitch findById(Long id);
-	Pitch findByName(String name);
-	List<Pitch> findByStadium(Stadium stadium);
+	Room findById(Long id);
+	Room findByName(String name);
+	List<Room> findByHostel(Hostel hostel);
 	
-	@Query("select ro from Pitch ro " +
-	         "where ro.name = :name and ro.stadium = :stadium")
-    Pitch findByNameAndStadium(
+	@Query("select ro from Room ro " +
+	         "where ro.name = :name and ro.hostel = :hostel")
+	Room findByNameAndHostel(
 			@Param("name") String name,  
-			@Param("stadium") Stadium stadium);
+			@Param("hostel") Hostel hostel);
     
     @Modifying
     @Transactional
-    @Query("update Pitch r set r.name = :name, r.ball = :ball, "
+    @Query("update Room r set r.name = :name, r.ball = :ball, "
     		+ "r.manish = :manish, r.grass = :grass, r.projector = :projector, r.changingRoom = :changingRoom, "
-    		+ "r.shower = :shower, r.wc = :wc, r.stadium = :stadium "
+    		+ "r.shower = :shower, r.wc = :wc, r.hostel = :hostel "
             + "where r.id = :id")
-    int updatePitch(
+    int updateRoom(
             @Param("id") Long id,
             @Param("name") String name,
             @Param("ball") int ball,
@@ -41,5 +41,5 @@ public interface PitchRepository extends JpaRepository<Pitch, Serializable> {
             @Param("changingRoom") String changingRoom,
             @Param("shower") String shower,
             @Param("wc") String wc,
-            @Param("stadium") Stadium stadium);
+            @Param("hostel") Hostel hostel);
 }

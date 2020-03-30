@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import com.yadro.web.rooms.app.model.Pitch;
-import com.yadro.web.rooms.app.model.Stadium;
+import com.yadro.web.rooms.app.model.Hostel;
+import com.yadro.web.rooms.app.model.Room;
 import com.yadro.web.rooms.app.model.University;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 import com.yadro.web.rooms.app.model.Account;
 import com.yadro.web.rooms.app.service.AccountService;
 import com.yadro.web.rooms.app.service.UniversityService;
-import com.yadro.web.rooms.app.service.PitchService;
-import com.yadro.web.rooms.app.service.StadiumService;
+import com.yadro.web.rooms.app.service.RoomService;
+import com.yadro.web.rooms.app.service.HostelService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,10 +30,10 @@ public class InitDefaultData {
 	private UniversityService universityService;
 
 	@Autowired
-	private StadiumService stadiumService;
+	private HostelService hostelService;
 
 	@Autowired
-	private PitchService pitchService;
+	private RoomService roomService;
 
 	@PostConstruct
 	private void initDefaultData() {
@@ -85,66 +85,66 @@ public class InitDefaultData {
 			accountService.register(a);
 		}
 		try {
-			List<Stadium> stadiums = new ArrayList<Stadium>();
-			Stadium stadium;
+			List<Hostel> hostels = new ArrayList<Hostel>();
+			Hostel hostel;
 
-			stadium = new Stadium();
-			stadium.setName("Yadro");
-			stadium.setAddress("7 building KPI");
-			stadium.setUniversity(universities.get(0));
-			stadiums.add(stadium);
+			hostel = new Hostel();
+			hostel.setName("Yadro");
+			hostel.setAddress("7 building KPI");
+			hostel.setUniversity(universities.get(0));
+			hostels.add(hostel);
 
-			stadium = new Stadium();
-			stadium.setName("24 building of KPI");
-			stadium.setAddress("24 building of KPI");
-			stadium.setUniversity(universities.get(0));
-			stadiums.add(stadium);
+			hostel = new Hostel();
+			hostel.setName("24 building of KPI");
+			hostel.setAddress("24 building of KPI");
+			hostel.setUniversity(universities.get(0));
+			hostels.add(hostel);
 
-			for(Stadium u : stadiums) {
-				stadiumService.add(u);
+			for(Hostel u : hostels) {
+				hostelService.add(u);
 			}
 
-			List<Pitch> pitches = new ArrayList<Pitch>();
-			Pitch pitch;
+			List<Room> rooms = new ArrayList<Room>();
+			Room room;
 
-			pitch = new Pitch();
-			pitch.setName("Left Pitch");
-			pitch.setBall(2);
-			pitch.setManish(22);
-			pitch.setWc("YES");
-			pitch.setShower("YES");
-			pitch.setGrass("NO");
-			pitch.setProjector("YES");
-			pitch.setChangingRoom("YES");
-			pitch.setStadium(stadiumService.findByName("Yadro"));
-			pitches.add(pitch);
+			room = new Room();
+			room.setName("Left Room");
+			room.setBall(2);
+			room.setManish(22);
+			room.setWc("YES");
+			room.setShower("YES");
+			room.setGrass("NO");
+			room.setProjector("YES");
+			room.setChangingRoom("YES");
+			room.setHostel(hostelService.findByName("Yadro"));
+			rooms.add(room);
 
-			pitch = new Pitch();
-			pitch.setName("Right Pitch");
-			pitch.setBall(2);
-			pitch.setManish(20);
-			pitch.setWc("YES");
-			pitch.setShower("YES");
-			pitch.setGrass("NO");
-			pitch.setProjector("NO");
-			pitch.setChangingRoom("YES");
-			pitch.setStadium(stadiumService.findByName("Yadro"));
-			pitches.add(pitch);
+			room = new Room();
+			room.setName("Right room");
+			room.setBall(2);
+			room.setManish(20);
+			room.setWc("YES");
+			room.setShower("YES");
+			room.setGrass("NO");
+			room.setProjector("NO");
+			room.setChangingRoom("YES");
+			room.setHostel(hostelService.findByName("Yadro"));
+			rooms.add(room);
 
-			pitch = new Pitch();
-			pitch.setName("Full Pitch");
-			pitch.setBall(4);
-			pitch.setManish(45);
-			pitch.setWc("YES");
-			pitch.setShower("YES");
-			pitch.setGrass("YES");
-			pitch.setProjector("YES");
-			pitch.setChangingRoom("YES");
-			pitch.setStadium(stadiumService.findByName("24 building of KPI"));
-			pitches.add(pitch);
+			room = new Room();
+			room.setName("Full room");
+			room.setBall(4);
+			room.setManish(45);
+			room.setWc("YES");
+			room.setShower("YES");
+			room.setGrass("YES");
+			room.setProjector("YES");
+			room.setChangingRoom("YES");
+			room.setHostel(hostelService.findByName("24 building of KPI"));
+			rooms.add(room);
 
-			for(Pitch r : pitches) {
-				pitchService.add(r);
+			for(Room r : rooms) {
+				roomService.add(r);
 			}
 		}
 		catch(Exception e){

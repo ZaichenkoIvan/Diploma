@@ -34,18 +34,18 @@ public class Event {
 	
     @NotNull
     @ManyToOne
-    private Pitch pitch;
+    private Room room;
    
     @NotNull
     @ManyToOne
     private Account account;
 	
-	public Event(String title, Date start, Date end, Pitch pitch, Account account) {
+	public Event(String title, Date start, Date end, Room room, Account account) {
 		super();
 		this.title = title;
 		this.start = start;
 		this.end = end;
-		this.pitch = pitch;
+		this.room = room;
 		this.account = account;
 	}
 

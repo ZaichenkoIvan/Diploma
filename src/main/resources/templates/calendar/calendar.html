@@ -102,8 +102,8 @@
 				    	moved = false,
 				    	eventToDeleteId,
 				    	eventInEdit,
-				    	rooom = /*[[${pitch}]]*/ null,
-				    	rooomId = /*[[${pitch.id}]]*/ null;
+				    	rooom = /*[[${room}]]*/ null,
+				    	rooomId = /*[[${room.id}]]*/ null;
 				    	
 				    	$('#calendar').fullCalendar({
 							header: {
@@ -137,7 +137,7 @@
 						        url: '/calendar/events',
 						        data: function() { // a function that returns an object
 						            return {
-					                pitch: rooomId
+					                room: rooomId
 						            };
 					            },
 						        type: 'GET',
@@ -182,7 +182,7 @@
 
 	<body>
  			<main class="cd-main-content-home" style="padding: 15px 15px 15px 15px !important">
- 			<h1 style="font-weight:bold">Reserve pitch: <span th:text="${pitch.name}"></span></h1>
+ 			<h1 style="font-weight:bold">Reserve room: <span th:text="${room.name}"></span></h1>
         		<div class="card-panel">
 					<div id='loading'>loading...</div>
 					

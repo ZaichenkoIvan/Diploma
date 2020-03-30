@@ -63,8 +63,8 @@
 					<li class="nav-item overview" th:classappend="${#httpServletRequest.requestURI=='/'}? active" >
 						<a th:href="@{/}" href="/" class="nav-link">Greeting</a>
 					</li>
-					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/book/stadium/'}? active" >
-						<a th:href="@{/book/stadium/}" href="/book/stadium/" class="nav-link">Booking</a>
+					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/book/hostel/'}? active" >
+						<a th:href="@{/book/hostel/}" href="/book/hostel/" class="nav-link">Booking</a>
 					</li>
 					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/'}? active" >
 						<a th:href="@{/event/list/}" href="/event/list/" class="nav-link">History of booking</a>
@@ -90,20 +90,20 @@
 							<li th:class="${#httpServletRequest.requestURI=='/university/add'}? active"><a th:href="@{/university/add}" href="university/add">Add Universities</a></li>
 						</ul>
 					</li>
-					<li class="nav-item has-children stadium" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#" class="nav-link">Stadium</a>
+					<li class="nav-item has-children hostels" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" class="nav-link">Hostel</a>
 
 						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/stadium/list'}? active"><a th:href="@{/stadium/list}" href="stadium/list">All Stadiums</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/stadium/add'}? active"><a th:href="@{/stadium/add}" href="stadium/add">Add Stadiums</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/hostel/list'}? active"><a th:href="@{/hostel/list}" href="hostel/list">All Hostels</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/hostel/add'}? active"><a th:href="@{/hostel/add}" href="hostel/add">Add Hostel</a></li>
 						</ul>
 					</li>
-					<li class="nav-item has-children pitches" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#" class="nav-link">Pitch</a>
+					<li class="nav-item has-children rooms" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" class="nav-link">Room</a>
 
 						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/pitch/list'}? active"><a th:href="@{/pitch/list}" href="pitch/list">All Pitches</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/pitch/add'}? active"><a th:href="@{/pitch/add}" href="pitch/add">Add Pitch</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/room/list'}? active"><a th:href="@{/room/list}" href="room/list">All Rooms</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/room/add'}? active"><a th:href="@{/room/add}" href="room/add">Add Room</a></li>
 						</ul>
 					</li>
 					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/all/'}? active"  sec:authorize="hasRole('ROLE_ADMIN')">

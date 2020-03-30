@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="#">
 	<head>
-		<title>Yadro - choose available pitch</title>
+		<title>Yadro - choose available room</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
@@ -46,8 +46,8 @@
 		<script th:inline="javascript">
 			/*<![CDATA[*/
 				$(document).ready(function() {
-				  $('#datatable-book-pitch').dataTable({
-					"data": /*[[${pitches}]]*/,
+				  $('#datatable-book-room').dataTable({
+					"data": /*[[${rooms}]]*/,
 					 bAutoWidth: false,
 					 "bPaginate": false
 					 
@@ -71,10 +71,10 @@
 			<main class="cd-main-content-home" style="padding: 15px 15px 15px 15px !important">
         		<div class="card material-table">
       				<div class="table-header">
-       					<span class="table-title">Available pitches</span>
+       					<span class="table-title">Available rooms</span>
       				</div>
       				<div class="mt-5">
-	     				<table id="datatable-book-pitch" style=".dataTables_filter input { width: 1px !important}"
+	     				<table id="datatable-book-room" style=".dataTables_filter input { width: 1px !important}"
 							   class="table-striped table-responsive-lg table-bordered table-sm table-hover shadow rounded text-center"
 						>
 	        				<thead>

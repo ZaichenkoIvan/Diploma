@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="#" layout:decorator="layout">
 	<head>
-		<title>Yadro - choose available pitch</title>
+		<title>Yadro - List hostels</title>
 		
 		<!-- MATERIALIZE SCRIPT -->	
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 		
 		<!-- MATERIALIZE CUSTOM STYLE -->	
 		<link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
-		
+
 		<script th:inline="javascript">
 			/*<![CDATA[*/
 				$(document).ready(function() {
-				  $('#datatable-book-pitch').dataTable({
-					"data": /*[[${pitches}]]*/,
-					 bAutoWidth: false,
-					 "aoColumnDefs": [
-					     { "sWidth": "6%", "aTargets": [0] } // 1 would be the 2nd column
-					 ],
-				    "oLanguage": {
-				      "sStripClasses": "",
-				      "sSearch": "",
-				      "sSearchPlaceholder": "Enter Keywords Here",
-				      "sInfo": "_START_ -_END_ of _TOTAL_",
-				      "sLengthMenu": '<span>Rows per page:</span><select class="browser-default">' +
-				        '<option value="10">10</option>' +
-				        '<option value="20">20</option>' +
-				        '<option value="30">30</option>' +
-				        '<option value="40">40</option>' +
-				        '<option value="50">50</option>' +
-				        '<option value="-1">All</option>' +
-				        '</select></div>'
-				    }
-				  });
+					$('#datatable-hostels').dataTable({
+						"data": /*[[${hostels}]]*/,
+					    "oLanguage": {
+					      "sStripClasses": "",
+					      "sSearch": "",
+					      "sSearchPlaceholder": "Enter Keywords Here",
+					      "sInfo": "_START_ -_END_ of _TOTAL_",
+					      "sLengthMenu": '<span>Rows per page:</span><select class="browser-default">' +
+					        '<option value="10">10</option>' +
+					        '<option value="20">20</option>' +
+					        '<option value="30">30</option>' +
+					        '<option value="40">40</option>' +
+					        '<option value="50">50</option>' +
+					        '<option value="-1">All</option>' +
+					        '</select></div>'
+					    },
+					    bAutoWidth: false
+					  });
 				});
 			/*]]>*/
 		</script>
@@ -40,34 +37,31 @@
 	
 	<body>
     	<div layout:fragment="content" class="content-wrapper-special" style="padding-top: 45px !important">
-
+    	
 			<main class="cd-main-content-home" style="padding: 15px 15px 15px 15px !important">
         		<div class="card material-table">
       				<div class="table-header">
-       					<span class="table-title">Available pitches</span>
+       					<span class="table-title">All hostels</span>
        					<div class="actions">
+       						<a th:href="@{/hostel/list/export}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">import_export</i></a>
+          					<a th:href="@{/hostel/add}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">home</i></a>
           					<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
         				</div>
       				</div>
       				<div class="mt-5">
-	     				<table id="datatable-book-pitch"
+	     				<table id="datatable-hostels"
 							   class="table-striped table-responsive-lg table-bordered table-sm table-hover shadow rounded text-center"
 						>
 	        				<thead>
 	       						<tr>
 	       							<th style="color:#ffffff !important"></th>
 	           						<th>Name</th>  
-									<th>Balls</th>
-	            					<th>Manishs</th>
-	            					<th>Grass</th>
-	            					<th>Projector</th>
-	            					<th>Changing room</th>
-	            					<th>Shower</th>
-	            					<th>WC</th>
+									<th>University</th>
+									<th>Rooms</th> 					
 	            					<th style="color:#ffffff !important"></th>
 	          					</tr>
 	       	 				</thead>
-      					</table>
+	      				</table>
       				</div>				
     			</div>
         	</main>

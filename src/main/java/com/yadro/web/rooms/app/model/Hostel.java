@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Stadium {
+public class Hostel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;

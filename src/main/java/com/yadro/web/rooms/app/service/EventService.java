@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import com.yadro.web.rooms.app.model.Pitch;
+import com.yadro.web.rooms.app.model.Room;
 import com.yadro.web.rooms.app.repository.AccountRepository;
 import com.yadro.web.rooms.app.repository.EventRepository;
 import org.slf4j.Logger;
@@ -51,7 +51,7 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 	
-	public List<Event> findByDatesBetween(String start, String end, String pitch) {
+	public List<Event> findByDatesBetween(String start, String end, String room) {
 		Date startDate = null;
 		Date endDate = null;
 		SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -63,7 +63,7 @@ public class EventService {
 			e.printStackTrace();
 		}
 		
-		long r = Long.parseLong(pitch);
+		long r = Long.parseLong(room);
 		return eventRepository.findByDatesBetween(startDate, endDate, r);
 	}
 
@@ -72,7 +72,7 @@ public class EventService {
 		long data1 = now.getTime();
 		long data2 = event.getStart().getTime();
 
-		List<Event> events = eventRepository.findByDatesBetweenOr(event.getStart(), event.getEnd(), event.getPitch().getId());
+		List<Event> events = eventRepository.findByDatesBetweenOr(event.getStart(), event.getEnd(), event.getRoom().getId());
 		if(events.size() == 0
 				&& (accountService.getLoggedInAccount().isAdmin() || countInAccount(accountService.getLoggedInAccount())==0)
 				&& (now.getTime() - event.getStart().getTime()) < 0
@@ -80,13 +80,13 @@ public class EventService {
 			Event created = eventRepository.save(event);
 			String message = String.format(
 					"Hello %s! \n" +
-							"You book pitch %s on this time : %s to %s.",
+							"You book room %s on this time : %s to %s.",
 					accountService.getLoggedInAccount().getFirstName(),
-					created.getPitch().getName(),
+					created.getRoom().getName(),
 					created.getStart(),
 					created.getEnd()
 			);
-			mailService.send(created.getAccount().getEmail(), "Book pitch", message);
+			mailService.send(created.getAccount().getEmail(), "Book room", message);
 			accountRepository.updateCountEvent(accountService.getLoggedInAccount().getUserName(), countInAccount(accountService.getLoggedInAccount()));
 			return created;
 		}else{
@@ -95,17 +95,17 @@ public class EventService {
 	}
 	
 	public Event update(Event event) {
-		List<Event> events = eventRepository.findByDatesBetweenOrAnd(event.getStart(), event.getEnd(), event.getPitch().getId(), event.getId());
+		List<Event> events = eventRepository.findByDatesBetweenOrAnd(event.getStart(), event.getEnd(), event.getRoom().getId(), event.getId());
 		if(events.size() == 0) {
 			String message = String.format(
 					"Hello %s! \n" +
-							"Your booking of pitch was UPDATE from %s on this time : %s to %s.",
+							"Your booking of room was UPDATE from %s on this time : %s to %s.",
                     accountService.getLoggedInAccount().getFirstName(),
-					event.getPitch().getName(),
+					event.getRoom().getName(),
 					event.getStart(),
 					event.getEnd()
 			);
-			mailService.send(event.getAccount().getEmail(), "Update booking of pitch", message);
+			mailService.send(event.getAccount().getEmail(), "Update booking of room", message);
 			return eventRepository.save(event);
 		}else{
 			return null;
@@ -116,23 +116,23 @@ public class EventService {
 		Event event = eventRepository.findById(id);
 		String message = String.format(
 				"Hello %s! \n" +
-						"Your booking of pitch %s on this time : %s to %s was DELETE",
+						"Your booking of room %s on this time : %s to %s was DELETE",
                 accountService.getLoggedInAccount().getFirstName(),
-				event.getPitch().getName(),
+				event.getRoom().getName(),
 				event.getStart(),
 				event.getEnd()
 		);
-		mailService.send(event.getAccount().getEmail(), "Delete booking of pitch", message);
+		mailService.send(event.getAccount().getEmail(), "Delete booking of room", message);
         this.eventRepository.delete(id);
         return true;
     }
 	
-	public int countInPitch(Pitch pitch) {
-		return this.eventRepository.findByPitch(pitch).size();
+	public int countInRoom(Room room) {
+		return this.eventRepository.findByRoom(room).size();
 	}
 	
-	public List<Event> pitchEventList(Pitch pitch) {
-		return this.eventRepository.findByPitch(pitch);
+	public List<Event> roomEventList(Room room) {
+		return this.eventRepository.findByRoom(room);
 	}
 	
 	public int countInAccount(Account account) {
@@ -159,7 +159,7 @@ public class EventService {
 	    	List<String> eventData = new ArrayList<String>();
 	    	//eventData.add("<a style=\"color: #f9b012\" href=\"/event/edit/" + event.getId() + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z\"></path><path d=\"M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z\"></path></svg></a>");
 	    	eventData.add(event.getAccount().getUserName());
-	    	eventData.add(event.getPitch().getName());
+	    	eventData.add(event.getRoom().getName());
 	    	eventData.add(event.getTitle());
 	    	eventData.add(String.valueOf(event.getStart()));
 	    	eventData.add(String.valueOf(event.getEnd()));
@@ -185,7 +185,7 @@ public class EventService {
 	    	List<String> eventData = new ArrayList<String>();
 	    	eventData.add("<a style=\"color: #f9b012\" href=\"/event/edit/" + event.getId() + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z\"></path><path d=\"M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z\"></path></svg></a>");
 	    	eventData.add(event.getTitle());
-	    	eventData.add(event.getPitch().getName());
+	    	eventData.add(event.getRoom().getName());
 	    	eventData.add(String.valueOf(event.getStart()));
 	    	eventData.add(String.valueOf(event.getEnd()));
 	    	eventData.add("<a style=\"color: #f9b012\" href=\"/event/list/delete?id=" + event.getId() + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12z\"></path><path d=\"M19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z\"></path></svg></a>");
@@ -215,7 +215,7 @@ public class EventService {
 			Map<String, Object> linkedHashMapMap = new LinkedHashMap<String, Object>();
 			linkedHashMapMap.put("id", event.getId());
 			linkedHashMapMap.put("title", event.getTitle());
-			linkedHashMapMap.put("pitch", event.getPitch());
+			linkedHashMapMap.put("room", event.getRoom());
 			linkedHashMapMap.put("start", event.getStart());
 			linkedHashMapMap.put("end", event.getEnd());
 			linkedHashMapMap.put("account", event.getAccount().getUserName());
