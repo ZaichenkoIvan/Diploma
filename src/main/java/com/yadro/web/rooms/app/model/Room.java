@@ -25,19 +25,19 @@ public class Room {
     @Size(min = 3, max = 100, message = "Name must have at least 3 characters.")
     private String name;
     
-    private int ball = 0;
+    private int floor = 0;
     
-    private int manish = 0;
+    private int capacity = 0;
     
-    private String grass = "NO";
+    private String sportsEquipment = "NO";
     
-    private String projector = "NO";
+    private String recreationArea = "NO";
     
-    private String changingRoom = "NO";
+    private String lunchZone = "NO";
     
-    private String shower = "NO";
+    private String lighting = "NO";
     
-    private String wc = "NO";
+    private String description = "NO";
        
     @ManyToOne
     @NotNull

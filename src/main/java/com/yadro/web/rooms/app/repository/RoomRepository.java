@@ -27,19 +27,19 @@ public interface RoomRepository extends JpaRepository<Room, Serializable> {
     
     @Modifying
     @Transactional
-    @Query("update Room r set r.name = :name, r.ball = :ball, "
-    		+ "r.manish = :manish, r.grass = :grass, r.projector = :projector, r.changingRoom = :changingRoom, "
-    		+ "r.shower = :shower, r.wc = :wc, r.hostel = :hostel "
+    @Query("update Room r set r.name = :name, r.floor = :floor, "
+    		+ "r.capacity = :capacity, r.sportsEquipment = :sportsEquipment, r.recreationArea = :recreationArea, r.lunchZone = :lunchZone, "
+    		+ "r.lighting = :lighting, r.description = :description, r.hostel = :hostel "
             + "where r.id = :id")
     int updateRoom(
             @Param("id") Long id,
             @Param("name") String name,
-            @Param("ball") int ball,
-            @Param("manish") int manish,
-            @Param("grass") String grass,
-            @Param("projector") String projector,
-            @Param("changingRoom") String changingRoom,
-            @Param("shower") String shower,
-            @Param("wc") String wc,
+            @Param("floor") int floor,
+            @Param("capacity") int capacity,
+            @Param("sportsEquipment") String sportsEquipment,
+            @Param("recreationArea") String recreationArea,
+            @Param("lunchZone") String lunchZone,
+            @Param("lighting") String lighting,
+            @Param("description") String description,
             @Param("hostel") Hostel hostel);
 }

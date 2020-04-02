@@ -90,13 +90,13 @@ public class RoomController {
 		room.setId(r.getId());
 		room.setName(r.getName());
 		room.setHostel(r.getHostel());
-		room.setBall(r.getBall());
-		room.setManish(r.getManish());
-		room.setGrass(r.getGrass());
-		room.setProjector(r.getProjector());
-		room.setChangingRoom(r.getChangingRoom());
-		room.setShower(r.getShower());
-		room.setWc(r.getWc());
+		room.setFloor(r.getFloor());
+		room.setCapacity(r.getCapacity());
+		room.setSportsEquipment(r.getSportsEquipment());
+		room.setRecreationArea(r.getRecreationArea());
+		room.setLunchZone(r.getLunchZone());
+		room.setLighting(r.getLighting());
+		room.setDescription(r.getDescription());
 		
 		List<Hostel> hostelList = hostelService.list();
 		model.addAttribute("hostelList", hostelList);

@@ -23,13 +23,13 @@
 		    					</div> 
 		    					
 		    					<div class="icon">
-									<label class="cd-label" for="cd-name">Ball</label>
-									<input class="user" type="text" name="cd-name" id="cd-name" th:field="*{ball}"/>
+									<label class="cd-label" for="cd-name">Floor</label>
+									<input class="user" type="text" name="cd-name" id="cd-name" th:field="*{floor}"/>
 		    					</div> 
 		    					
 		    					<div class="icon">
-									<label class="cd-label" for="cd-name">Manish</label>
-									<input class="user" type="text" name="cd-name" id="cd-name" th:field="*{manish}"/>
+									<label class="cd-label" for="cd-name">Capacity</label>
+									<input class="user" type="text" name="cd-name" id="cd-name" th:field="*{capacity}"/>
 		    					</div> 
 
 							</fieldset>
@@ -46,11 +46,11 @@
 								</div> 
 								
 								<div>
-									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Grass</h4>
+									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Sports Equipment</h4>
 
 									<p class="cd-select icon">
-										<select class="budget" th:field="*{grass}" sec:authorize="hasRole('ROLE_ADMIN')">
-											<option disabled="true" selected="selected" value="${room.grass}"></option>
+										<select class="budget" th:field="*{sportsEquipment}" sec:authorize="hasRole('ROLE_ADMIN')">
+											<option disabled="true" selected="selected" value="${room.sportsEquipment}"></option>
   											<option value="YES">Yes</option>
   											<option value="NO">No</option>
 										</select>
@@ -58,11 +58,11 @@
 								</div> 
 								
 								<div>
-									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Projector</h4>
+									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Recreation Area</h4>
 
 									<p class="cd-select icon">
-										<select class="budget" th:field="*{projector}" sec:authorize="hasRole('ROLE_ADMIN')">
-											<option disabled="true" selected="selected" value="${room.projector}"></option>
+										<select class="budget" th:field="*{recreationArea}" sec:authorize="hasRole('ROLE_ADMIN')">
+											<option disabled="true" selected="selected" value="${room.recreationArea}"></option>
   											<option value="YES">Yes</option>
   											<option value="NO">No</option>
 										</select>
@@ -70,11 +70,11 @@
 								</div> 
 								
 								<div>
-									<h4 sec:authorize="hasRole('ROLE_ADMIN')">ChangingRoom</h4>
+									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Lunch Zone</h4>
 
 									<p class="cd-select icon">
-										<select class="budget" th:field="*{changingRoom}" sec:authorize="hasRole('ROLE_ADMIN')">
-											<option disabled="true" selected="selected" value="${room.changingRoom}"></option>
+										<select class="budget" th:field="*{lunchZone}" sec:authorize="hasRole('ROLE_ADMIN')">
+											<option disabled="true" selected="selected" value="${room.lunchZone}"></option>
   											<option value="YES">Yes</option>
   											<option value="NO">No</option>
 										</select>
@@ -82,11 +82,11 @@
 								</div> 
 								
 								<div>
-									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Shower</h4>
+									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Lighting</h4>
 
 									<p class="cd-select icon">
-										<select class="budget" th:field="*{shower}" sec:authorize="hasRole('ROLE_ADMIN')">
-											<option disabled="true" selected="selected" value="${room.shower}"></option>
+										<select class="budget" th:field="*{lighting}" sec:authorize="hasRole('ROLE_ADMIN')">
+											<option disabled="true" selected="selected" value="${room.lighting}"></option>
   											<option value="YES">Yes</option>
   											<option value="NO">No</option>
 										</select>
@@ -94,11 +94,11 @@
 								</div> 
 								
 								<div>
-									<h4 sec:authorize="hasRole('ROLE_ADMIN')">WC</h4>
+									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Description</h4>
 
 									<p class="cd-select icon">
-										<select class="budget" th:field="*{wc}" sec:authorize="hasRole('ROLE_ADMIN')">
-											<option disabled="true" selected="selected" value="${room.wc}"></option>
+										<select class="budget" th:field="*{description}" sec:authorize="hasRole('ROLE_ADMIN')">
+											<option disabled="true" selected="selected" value="${room.description}"></option>
   											<option value="YES">Yes</option>
   											<option value="NO">No</option>
 										</select>
@@ -122,8 +122,8 @@
         
         					<div class="error-message-ed"  th:if="${#fields.hasErrors()}">
 								<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</p>
-								<p th:if="${#fields.hasErrors('ball')}" th:errors="*{ball}">Ball error</p>
-								<p th:if="${#fields.hasErrors('manish')}" th:errors="*{manish}">Manish error</p>
+								<p th:if="${#fields.hasErrors('floor')}" th:errors="*{floor}">Floor error</p>
+								<p th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}">Capacity error</p>
 							</div>
 							
 						</form>

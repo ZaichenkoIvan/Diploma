@@ -1770,8 +1770,8 @@ Parallax
 }
 
 .parallax .cd-btn.first-action {
- height: 150px;
- width: 150px;
+ height: 100px !important;
+ width: 100px !important;
  background: url(../assets/img-icon.svg) no-repeat center center;
  background-size: cover;
  pointer-events: none;
