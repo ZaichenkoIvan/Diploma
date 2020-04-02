@@ -41,7 +41,9 @@
 			<main class="cd-main-content-home" style="padding: 15px 15px 15px 15px !important">
         		<div class="card material-table">
       				<div class="table-header">
-       					<span class="table-title">All universities <a style="font-size:10px" th:href="@{/account/list/group}" href="account/list/group">All Accounts with university names </a><span style="font-size:10px"> | </span><a style="font-size:10px" th:href="@{/hostel/list}" href="hostel/list">All Hostels with university names</a></span>
+       					<span class="table-title">All universities</span>
+
+
        					<div class="actions">
        						<a th:href="@{/university/list/export}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">import_export</i></a>
           					<a th:href="@{/university/add}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">group_work</i></a>
@@ -62,7 +64,12 @@
 	          					</tr>
 	       	 				</thead>
 	      				</table>	
-      				</div>			
+      				</div>
+
+					<div class="action-btn-special">
+						<a th:href="@{/account/list/group}" href="account/list/group" style="background: #00FF00; font-weight:bold">All Accounts with university names</a>
+						<a th:href="@{/hostel/list}" href="hostel/list" style="background: #00FF00; font-weight:bold">All Hostels with university names</a>
+					</div>
     			</div>
         	</main>
         	
