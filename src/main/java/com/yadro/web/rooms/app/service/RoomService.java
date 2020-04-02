@@ -127,12 +127,8 @@ public class RoomService {
 	    	}else{
 	    		roomData.add("<span style=\"font-size:1px; color: #fffff\">NO</span><svg fill=\"#BC0000\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/> <path d=\"M0 0h24v24H0z\" fill=\"none\"/> </svg>");
 	    	}
-	    	
-	    	if (room.getDescription().equals("YES")) {
-	    		roomData.add("<span style=\"font-size:1px; color: #fffff\">YES</span> <svg fill=\"#5CA830\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M0 0h24v24H0z\" fill=\"none\"/> <path d=\"M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z\"/> </svg>");
-	    	}else{
-	    		roomData.add("<span style=\"font-size:1px; color: #fffff\">NO</span> <svg fill=\"#BC0000\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/> <path d=\"M0 0h24v24H0z\" fill=\"none\"/> </svg>");
-	    	}
+
+			roomData.add(room.getDescription());
 	    	
 	    	int count = eventService.countInRoom(room);
 	    	roomData.add(String.valueOf(count));
@@ -142,7 +138,7 @@ public class RoomService {
 	    	}else{
 	    		roomData.add("<a style=\"color: #f9b012\" href=\"/room/delete?id=" + room.getId() + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12z\"></path><path d=\"M19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z\"></path></svg></a>");
 	    	}
-	    	
+
 	    	roomList.add(roomData);
 	    }
 		return roomList;
@@ -193,12 +189,8 @@ public class RoomService {
 		    	}else{
 		    		roomData.add("<span style=\"font-size:1px; color: #fffff\">NO</span><svg fill=\"#BC0000\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/> <path d=\"M0 0h24v24H0z\" fill=\"none\"/> </svg>");
 		    	}
-		    	
-		    	if (room.getDescription().equals("YES")) {
-		    		roomData.add("<span style=\"font-size:1px; color: #fffff\">YES</span> <svg fill=\"#5CA830\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M0 0h24v24H0z\" fill=\"none\"/> <path d=\"M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z\"/> </svg>");
-		    	}else{
-		    		roomData.add("<span style=\"font-size:1px; color: #fffff\">NO</span> <svg fill=\"#BC0000\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/> <path d=\"M0 0h24v24H0z\" fill=\"none\"/> </svg>");
-		    	}
+
+				roomData.add(room.getDescription());
 
 		    	roomData.add("");
 		    	
