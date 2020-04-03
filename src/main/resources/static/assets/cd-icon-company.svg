@@ -1,13 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-<polyline fill="none" stroke="#D5DDDF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="10,16 1,16 1,5 
-	23,5 23,16 14,16 "/>
-<polyline fill="none" stroke="#D5DDDF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="22,16 22,22 2,22 
-	2,16 "/>
-<polyline fill="none" stroke="#D5DDDF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="8,5 8,2 16,2 
-	16,5 "/>
-<rect x="10" y="14" fill="none" stroke="#D5DDDF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" width="4" height="4"/>
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<circle style="fill:#662E57;" cx="256" cy="256" r="256"/>
+<path style="fill:#590F38;" d="M269.167,511.667C404.433,504.814,512,392.969,512,256c0-3.719-0.097-7.414-0.254-11.094
+	l-56.237-56.237L81.37,308.22l68.333,68.333L142,384.5L269.167,511.667z"/>
+<path style="fill:#FFECB3;" d="M123.822,312.331h320.687V199.669H123.822c-31.111,0-56.331,25.22-56.331,56.331l0,0
+	C67.491,287.111,92.711,312.331,123.822,312.331z"/>
+<rect x="255.95" y="199.67" style="fill:#FFD863;" width="188.56" height="112.66"/>
+<path style="fill:#FFB344;" d="M455.509,323.331H123.822c-37.126,0-67.331-30.205-67.331-67.331s30.205-67.331,67.331-67.331
+	h331.687v22H123.822c-24.996,0-45.331,20.335-45.331,45.331s20.335,45.331,45.331,45.331h331.687V323.331z"/>
+<g>
+	<rect x="255.95" y="301.33" style="fill:#FF9451;" width="199.56" height="22"/>
+	<rect x="255.95" y="188.67" style="fill:#FF9451;" width="199.56" height="22"/>
+</g>
+<polygon style="fill:#F1333F;" points="209.5,384.5 175.75,357.77 142,384.5 142,247.5 209.5,247.5 "/>
+<polygon style="fill:#AE283F;" points="175.75,357.77 209.5,384.5 209.5,247.5 175.75,247.5 "/>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
 </svg>

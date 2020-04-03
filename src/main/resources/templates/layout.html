@@ -47,7 +47,22 @@
 	
 	<body>
     	<header class="navbar navbar-expand-lg main-navbar">
-			<a href="#0" class="cd-logo"><img th:src="@{/assets/img-dashlogo.svg}" alt="Logo" /></a>
+			<nav class="cd-nav">
+				<ul class="cd-top-nav">
+					<li class="has-children account">
+						<a href="" class="pull-right" th:if="${g_account}">
+							<img th:src="@{/assets/cd-avatar.svg}" alt="avatar" />
+							<span th:text="${g_account.userName}"></span>
+						</a>
+
+						<ul>
+							<li><a th:href="@{/account/edit/0}" href="/account/edit">Account</a></li>
+							<li><a th:href="@{/logout}" href="logout">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+
 
 			<!-- <div class="cd-search is-hidden">
 				<form action="#0">
@@ -61,13 +76,13 @@
 				<ul class="navbar-nav">
 <!--					<li class="nav-item cd-label">Main</li>-->
 					<li class="nav-item overview" th:classappend="${#httpServletRequest.requestURI=='/'}? active" >
-						<a th:href="@{/}" href="/" class="nav-link">Greeting</a>
+						<a th:href="@{/}" href="/" class="nav-link">Main</a>
 					</li>
 					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/book/hostel/'}? active" >
-						<a th:href="@{/book/hostel/}" href="/book/hostel/" class="nav-link">Booking</a>
+						<a th:href="@{/book/hostel/}" href="/book/hostel/" class="nav-link">Reservation</a>
 					</li>
 					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/'}? active" >
-						<a th:href="@{/event/list/}" href="/event/list/" class="nav-link">History of booking</a>
+						<a th:href="@{/event/list/}" href="/event/list/" class="nav-link">My reservations</a>
 					</li>
 				</ul>
 
@@ -78,32 +93,32 @@
 						<a href="#" class="nav-link">Users</a>
 
 						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/account/list'}? active"><a th:href="@{/account/list}" href="account/list">All Users</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/account/register'}? active"><a th:href="@{/account/register}" href="account/register">Add User</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/account/list'}? active"><a th:href="@{/account/list}" href="account/list">All</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/account/register'}? active"><a th:href="@{/account/register}" href="account/register">Create</a></li>
 						</ul>
 					</li>
 					<li class="nav-item has-children universities" sec:authorize="hasRole('ROLE_ADMIN')">
 						<a href="#" class="nav-link">Universities</a>
 
 						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/university/list'}? active"><a th:href="@{/university/list}" href="university/list">All Universities</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/university/add'}? active"><a th:href="@{/university/add}" href="university/add">Add Universities</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/university/list'}? active"><a th:href="@{/university/list}" href="university/list">All</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/university/add'}? active"><a th:href="@{/university/add}" href="university/add">Create</a></li>
 						</ul>
 					</li>
 					<li class="nav-item has-children hostels" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#" class="nav-link">Hostel</a>
+						<a href="#" class="nav-link">Hostels</a>
 
 						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/hostel/list'}? active"><a th:href="@{/hostel/list}" href="hostel/list">All Hostels</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/hostel/add'}? active"><a th:href="@{/hostel/add}" href="hostel/add">Add Hostel</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/hostel/list'}? active"><a th:href="@{/hostel/list}" href="hostel/list">All</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/hostel/add'}? active"><a th:href="@{/hostel/add}" href="hostel/add">Create</a></li>
 						</ul>
 					</li>
 					<li class="nav-item has-children rooms" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#" class="nav-link">Room</a>
+						<a href="#" class="nav-link">Rooms</a>
 
 						<ul>
-							<li th:class="${#httpServletRequest.requestURI=='/room/list'}? active"><a th:href="@{/room/list}" href="room/list">All Rooms</a></li>
-							<li th:class="${#httpServletRequest.requestURI=='/room/add'}? active"><a th:href="@{/room/add}" href="room/add">Add Room</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/room/list'}? active"><a th:href="@{/room/list}" href="room/list">All</a></li>
+							<li th:class="${#httpServletRequest.requestURI=='/room/add'}? active"><a th:href="@{/room/add}" href="room/add">Create</a></li>
 						</ul>
 					</li>
 					<li class="nav-item bookmarks" th:classappend="${#httpServletRequest.requestURI=='/event/list/all/'}? active"  sec:authorize="hasRole('ROLE_ADMIN')">
@@ -147,24 +162,11 @@
 <!--						window.addEventListener("resize", updateTextSize); */-->
 <!--					</script>-->
 <!--				</ul>-->
+				<a href="#0" class="cd-logo"><img th:src="@{/assets/img-dashlogo.svg}" alt="Logo" /></a>
 
 			</div>
 
-			<nav class="cd-nav">
-				<ul class="cd-top-nav">
-					<li class="has-children account">
-						<a href="" class="pull-right" th:if="${g_account}">
-							<img th:src="@{/assets/cd-avatar.svg}" alt="avatar" />
-                        	<span th:text="${g_account.userName}"></span>
-						</a>
 
-						<ul>
-							<li><a th:href="@{/account/edit/0}" href="/account/edit">Edit profile</a></li>
-							<li><a th:href="@{/logout}" href="logout">Logout</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
 		</header> <!-- .cd-main-header -->
 
 		<main class="cd-main-content">

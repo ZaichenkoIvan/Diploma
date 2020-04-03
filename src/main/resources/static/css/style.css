@@ -330,7 +330,7 @@ sigin/signup popup
   width: 100%;
 }
 .cd-form input.has-padding {
-  padding: 12px 20px 12px 50px;
+  padding: 12px 20px 12px 80px;
 }
 .cd-form input.has-border {
   border: 1px solid #d2d8d8;
@@ -440,7 +440,7 @@ sigin/signup popup
     margin-bottom: 0;
   }
   .cd-form input.has-padding {
-    padding: 16px 20px 16px 50px;
+    padding: 16px 20px 16px 80px;
   }
   .cd-form input[type=submit] {
     padding: 16px 0;
