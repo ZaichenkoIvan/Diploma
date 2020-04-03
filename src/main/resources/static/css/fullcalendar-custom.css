@@ -46,18 +46,19 @@ tr {
   opacity: .65;
   left: 5% !important;
   right: 5% !important;
+
 }
 
 /* Bolds the name of the event and inherits the font size */
 .fc-event {
   /* background-color: #473689 !important; */
-  background-color: #006600;
+  background-color: #006600 !important;
   border-radius: 1px !important;
   border: 1px solid rgba(208, 208, 208, 1) !important;
   padding: 6px !important;
   font-size: inherit !important;
   font-weight: bold !important;
-  
+  color: chartreuse !important;
 }
 
 /* Remove the header border from Schedule */
