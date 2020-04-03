@@ -74,7 +74,6 @@ Navigation Main Page Content
 }
 @media only screen and (min-width: 768px) {
   .cd-main-content .content-wrapper {
-    margin-left: 110px;
     padding-top: 55px;
   }
   .cd-main-content .content-wrapper h1 {
@@ -87,9 +86,6 @@ Navigation Main Page Content
   }
 }
 @media only screen and (min-width: 1170px) {
-  .cd-main-content .content-wrapper {
-    margin-left: 200px;
-  }
   .cd-main-content::before {
     content: 'desktop';
   }
@@ -117,7 +113,6 @@ Navigation Main Page Content Special
 }
 @media only screen and (min-width: 768px) {
   .cd-main-content .content-wrapper-special {
-    margin-left: 110px;
     padding-top: 55px;
   }
   .cd-main-content .content-wrapper-special h1 {
@@ -130,9 +125,6 @@ Navigation Main Page Content Special
   }
 }
 @media only screen and (min-width: 1170px) {
-  .cd-main-content .content-wrapper-special {
-    margin-left: 200px;
-  }
   .cd-main-content::before {
     content: 'desktop';
   }
@@ -564,7 +556,8 @@ Navigation Sidebar
 
 .action-btn-special a {
   display: block;
-  margin: 10px 5%;
+  margin: auto;
+  margin-bottom: 15px;
   padding: 0em 0;
   background-color: #006600 !important;
   border-radius: .25em;
@@ -574,13 +567,17 @@ Navigation Sidebar
   color: #ffffff;
   font-weight: bold;
   width: 150px;
-  height: 40px;
+  background: #28a745 !important;
+  padding: 10px 10px !important;
   font-size: 10pt !important;
   display:flex !important;
     align-items: center !important; /* Vertical center alignment */
     justify-content: center !important;
-   margin-rightt:auto; 
-   margin-left:0;
+}
+
+.action-btn-special a:hover {
+    background-color: #2d862d !important;
+    color: #ffffff !important;
 }
 
 /* @media only screen and (min-width: 768px) {
@@ -773,7 +770,7 @@ Navigation Sidebar
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
   .has-children ul a {
-    text-align: right;
+    text-align: center;
     border: none;
     padding: 1em;
   }
@@ -802,7 +799,6 @@ Navigation Sidebar
   }
   .main-navbar .has-children ul {
     background-color: #145614;
-    width: 200px;
     top: 100%;
     right: 0;
     left: auto;
@@ -2610,6 +2606,8 @@ Home
   position: relative !important;
   min-height: 100vh !important;
   padding: 0px 5% 3em;
+  max-width: 50%;
+  margin: auto;
 }
 .cd-main-content-home:after {
   content: "";
