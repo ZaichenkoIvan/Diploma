@@ -20,17 +20,14 @@
 		    					<div class="icon">
 									<label class="cd-label" for="cd-name">Name</label>
 									<input class="user" type="text" name="cd-name" id="cd-name" th:field="*{name}" required="required" />
-		    					</div> 
-
-							</fieldset>
-
-							<fieldset>
-            					
-								<div>
-		      						<input class="full-width" type="submit" value="Create" />
 		    					</div>
 
+								<div>
+									<input class="full-width" type="submit" value="Create" />
+								</div>
+
 							</fieldset>
+							
 							  
     						<div class="success-message-ed" th:if="${#httpServletRequest.getParameter('updated')}">
 		    					<p>You successfully created user</p>

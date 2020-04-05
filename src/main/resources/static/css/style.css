@@ -640,7 +640,8 @@ General Style
   height: 100vh;
   width: 100%;
   /* vertically align its content */
-  display: table;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -2017,4 +2018,16 @@ Video
 
 .content-wrapper-special {
     margin: 0!important;
+}
+
+
+// Activities
+.activity-image {
+    width: 60px;
+    height: 60px;
+    background: url(.../assets/table-tennis.svg);
+}
+
+.activities .activity-text {
+
 }

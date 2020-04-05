@@ -522,6 +522,9 @@ button.ui-button::-moz-focus-inner {
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
 	float: right;
 }
+.ui-dialog-buttonset .ui-button-text {
+    color: #fff;
+}
 .ui-dialog .ui-dialog-buttonpane button {
 	margin: .5em .4em .5em 0;
 	cursor: pointer;
@@ -1226,7 +1229,7 @@ body .ui-tooltip {
 
 /* Overlays */
 .ui-widget-overlay {
-	background: #473689;
+	background: #006600;
 	opacity: .95;
 	filter: Alpha(Opacity=95); /* support: IE8 */
 }
