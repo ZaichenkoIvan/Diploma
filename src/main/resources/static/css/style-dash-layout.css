@@ -573,6 +573,20 @@ Navigation Sidebar
   display:flex !important;
     align-items: center !important; /* Vertical center alignment */
     justify-content: center !important;
+
+    /*position: relative !important;*/
+    /*display: inline-block !important;*/
+    /*font-weight: bold !important;*/
+    /*padding: 0.5em 1em !important;*/
+    /*text-decoration: none !important;*/
+    /*border-left: solid 4px #006600 !important;*/
+    /*border-right: solid 4px #006600;*/
+    /*color: #006600 !important;*/
+    /*text-shadow: 0 0 5px white !important;*/
+    /*padding: 0.5em 1em !important;*/
+    /*background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;*/
+    /*background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;*/
+    /*transition: .4s !important;*/
 }
 
 .action-btn-special a:hover {
