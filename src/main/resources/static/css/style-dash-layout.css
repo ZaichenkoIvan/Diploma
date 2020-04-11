@@ -559,15 +559,15 @@ Navigation Sidebar
   margin: auto;
   margin-bottom: 15px;
   padding: 0em 0;
-  background-color: #006600 !important;
+  /*background-color: #006600 !important;*/
   border-radius: .25em;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-align: center;
-  color: #ffffff;
+  /*color: #ffffff;*/
   font-weight: bold;
   width: 150px;
-  background: #28a745 !important;
+  /*background: #28a745 !important;*/
   padding: 10px 10px !important;
   font-size: 10pt !important;
   display:flex !important;
@@ -579,19 +579,21 @@ Navigation Sidebar
     /*font-weight: bold !important;*/
     /*padding: 0.5em 1em !important;*/
     /*text-decoration: none !important;*/
-    /*border-left: solid 4px #006600 !important;*/
-    /*border-right: solid 4px #006600;*/
-    /*color: #006600 !important;*/
+    border-left: solid 4px #006600 !important;
+    border-right: solid 4px #006600;
+    color: #006600 !important;
     /*text-shadow: 0 0 5px white !important;*/
     /*padding: 0.5em 1em !important;*/
-    /*background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;*/
-    /*background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;*/
+  border-left: solid 4px #006600 !important;
+  border-right: solid 4px #006600 !important;
+    background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
+    background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
     /*transition: .4s !important;*/
 }
 
 .action-btn-special a:hover {
     background-color: #2d862d !important;
-    color: #ffffff !important;
+    color: #001a00 !important;
 }
 
 /* @media only screen and (min-width: 768px) {
@@ -1499,7 +1501,7 @@ cd-form {
   background: #2c97de;
   border-radius: .25em;
   padding: 16px 20px;
-  color: #ffffff;
+  color: #006600 !important;
   font-weight: bold;
   float: right;
   cursor: pointer;
@@ -1510,6 +1512,12 @@ cd-form {
   -ms-appearance: none;
   -o-appearance: none;
   appearance: none;
+  font-size: 18px;
+  color: #006600 !important;
+  border-left: solid 4px #006600 !important;
+  border-right: solid 4px #006600 !important;
+  background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
+  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
 }
 .no-touch .cd-form input[type="submit"]:hover {
   background: #006600;

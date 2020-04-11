@@ -355,8 +355,8 @@ sigin/signup popup
 .cd-form input[type=submit] {
   padding: 16px 0;
   cursor: pointer;
-  background: #006600;
-  color: #FFF;
+  /*background: #006600;*/
+  /*color: #FFF;*/
   font-weight: bold;
   border: none;
   -webkit-appearance: none;
@@ -364,6 +364,12 @@ sigin/signup popup
   -ms-appearance: none;
   -o-appearance: none;
   appearance: none;
+  font-size: 18px;
+  color: #006600 !important;
+  border-left: solid 4px #006600 !important;
+  border-right: solid 4px #006600 !important;
+  background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
+  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
 }
 .no-touch .cd-form input[type=submit]:hover, .no-touch .cd-form input[type=submit]:focus {
   background: #FB5E58;
@@ -403,9 +409,9 @@ sigin/signup popup
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity 0.2s 0, visibility 0 0.2s;
-  -moz-transition: opacity 0.2s 0, visibility 0 0.2s;
-  transition: opacity 0.2s 0, visibility 0 0.2s;
+  /*-webkit-transition: opacity 0.2s 0, visibility 0 0.2s;*/
+  /*-moz-transition: opacity 0.2s 0, visibility 0 0.2s;*/
+  /*transition: opacity 0.2s 0, visibility 0 0.2s;*/
 }
 .cd-form .cd-error-message::after {
   /* triangle */
@@ -422,9 +428,9 @@ sigin/signup popup
 .cd-form .cd-error-message.is-visible {
   opacity: 1;
   visibility: visible;
-  -webkit-transition: opacity 0.2s 0, visibility 0 0;
-  -moz-transition: opacity 0.2s 0, visibility 0 0;
-  transition: opacity 0.2s 0, visibility 0 0;
+  /*-webkit-transition: opacity 0.2s 0, visibility 0 0;*/
+  /*-moz-transition: opacity 0.2s 0, visibility 0 0;*/
+  /*transition: opacity 0.2s 0, visibility 0 0;*/
 }
 @media only screen and (min-width: 600px) {
   .cd-form {
@@ -2014,18 +2020,6 @@ Video
   .cd-bg-video-wrapper::after {
     content: 'desktop';
   }
-}
-
-.content-wrapper-special {
-    margin: 0!important;
-}
-
-
-// Activities
-.activity-image {
-    width: 60px;
-    height: 60px;
-    background: url(.../assets/table-tennis.svg);
 }
 
 .activities .activity-text {
