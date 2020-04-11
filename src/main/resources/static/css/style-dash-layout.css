@@ -1234,6 +1234,7 @@ Main components TABS
   font-size: 1.275rem;
   line-height: 1.6;
   margin-bottom: 2em;
+  font-weight: 900 !important;
 }
 @media only screen and (min-width: 768px) {
   .cd-tabs-content {
@@ -1323,7 +1324,8 @@ cd-form {
 }
 .cd-form h4, .cd-form .cd-label {
   font-size: 1.3rem;
-  color: #94aab0;
+  color: #000000 !important;
+  font-weight: 900 !important;
   margin-bottom: 10px;
 }
 .cd-form .cd-label {
@@ -1781,6 +1783,11 @@ cd-form {
 .cd-form input[type=password] {
   /* space left for the HIDE button */
   padding-right: 65px;
+  background-color: #80ff80 !important;
+  border: 2px solid darkgreen !important;
+  border-radius: 4px !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
 }
 .cd-form input[type=submit] {
   padding: 16px 0;
@@ -1937,6 +1944,11 @@ Custom icons
 -------------------------------- */
 .cd-form .icon input, .cd-form .icon select, .cd-form .icon textarea {
   padding-left: 80px !important;
+  background-color: #80ff80 !important;
+  border: 2px solid darkgreen !important;
+  border-radius: 4px !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
 }
 .cd-form .user {
   background: url(../assets/cd-icon-user.svg) no-repeat 16px center;
@@ -2504,7 +2516,7 @@ div.material-table table tr td {
     word-wrap: break-word;
     white-space: pre-wrap; 
     white-space: -moz-pre-wrap; 
-    white-space: -pre-wrap; 
+    white-space: -pre-wrap;
 }
 
 @media only screen and (min-width: 768px) {
@@ -2512,11 +2524,14 @@ div.material-table table tr td {
   padding: 0 0 0 56px;
   height: 48px;
   color: rgba(0, 0, 0, 0.87);
-  border-bottom: solid 1px #DDDDDD;
+  /*border-bottom: solid 1px #DDDDDD;*/
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
+      font-weight: 900 !important;
+      background-color: #b3ffb3!important;
+      border: 2px solid darkgreen !important;
 	}
 }
 
@@ -2544,7 +2559,7 @@ div.material-table table tr {
 
 div.material-table table th {
   font-size: 13px !important;
-  font-weight: bold;
+  /*font-weight: bold;*/
   color: #757575;
   cursor: pointer;
   white-space: nowrap;
@@ -2553,6 +2568,9 @@ div.material-table table th {
   padding-left: 56px;
   vertical-align: middle;
   outline: none !important;
+  font-weight: 900 !important;
+  background-color: #b3ffb3!important;
+  border: 2px solid darkgreen !important;
 }
 
 div.material-table table th.sorting_asc,

@@ -333,12 +333,16 @@ sigin/signup popup
   padding: 12px 20px 12px 80px;
 }
 .cd-form input.has-border {
-  border: 1px solid #d2d8d8;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
   appearance: none;
+  background-color: #80ff80 !important;
+  border: 2px solid darkgreen !important;
+  border-radius: 4px !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
 }
 .cd-form input.has-border:focus {
   border-color: #343642;
