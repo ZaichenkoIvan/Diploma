@@ -1947,8 +1947,8 @@ Custom icons
   background-color: #80ff80 !important;
   border: 2px solid darkgreen !important;
   border-radius: 4px !important;
-  color: #000000 !important;
   font-weight: 900 !important;
+  color: #000000 !important;
 }
 .cd-form .user {
   background: url(../assets/cd-icon-user.svg) no-repeat 16px center;

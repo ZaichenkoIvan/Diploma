@@ -51,50 +51,50 @@
 		<link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
 		
 		<!-- JQUERY UI CUSTOM STYLE -->
-		<link rel="stylesheet" href="/css/jquery-ui-custom.css" /> 
-	
+		<link rel="stylesheet" href="/css/jquery-ui-custom.css" />
+
 		<script th:inline="javascript">
 			/*<![CDATA[*/
-				$(function(){ 
-					$('form.material').materialForm(); 
+				$(function(){
+					$('form.material').materialForm();
 				});
-		
+
 				$(function() {
-					
-				    var dialog, 
-				    	form, 
-				    	tips = $( ".validateTips" ), 
+
+				    var dialog,
+				    	form,
+				    	tips = $( ".validateTips" ),
 				    	moved = false,
 				    	eventToDeleteId,
 				    	eventInEdit,
 				    	account = /*[[${g_account}]]*/ null,
 				    	rooom = /*[[${room}]]*/ null,
 				    	rooomId = /*[[${room.id}]]*/ null;
-				    
+
 				    function validateDateRange(start, end) {
-				    	
+
 				    	if(!start.isValid()) {
 				    		alert("Start date is invalid");
-				    		return false; 
+				    		return false;
 				    	}
-				    	
+
 				    	if(!end.isValid()) {
 				    		alert("End date is invalid");
-				    		return false; 
+				    		return false;
 				    	}
-				    	
+
 				    	if(start.isAfter(end)) {
-					 		alert("End date must be after start date");	
-					 		return false; 
+					 		alert("End date must be after start date");
+					 		return false;
 					 	}
-				    	
+
 				    	if(start.isSame(end)) {
 				    		alert("End date must be after start date");
 				    		return false;
 				    	}
 				    	return true;
 				    }
-					 
+
 				    function isOverlapping(start, end, id){
 				        var array = $('#calendar').fullCalendar('clientEvents');
 				        for(i in array){
@@ -105,12 +105,12 @@
 				        }
 				        return false;
 				    }
-				    
-				   	function removeEvent() {  
-				   		
+
+				   	function removeEvent() {
+
 				   		var eventStart = moment(modstartdateandtime.value);
 				 		var eventEnd = moment(modenddateandtime.value);
-				   		
+
 				    	var eventData;
 						if (moduid.value) {
 							eventData = {
@@ -121,9 +121,9 @@
 								account: account,
 								room: rooom
 							};
-							
+
 				    		editDialog.dialog( "close" );
-			
+
 					    	$.ajax({
 							    type: "DELETE",
 							    url: "/calendar/removeevent",
@@ -140,29 +140,29 @@
 						}
 					    return true;
 				    }
-					   
+
 				    function editEvent(event, elements) {
 				    	var eventStart = moment(event.start).format("YYYY-MM-DDTHH:mm:ss"); //moment(event.start);
 				 			var eventEnd = moment(event.end).format("YYYY-MM-DDTHH:mm:ss");
-				 			
+
 				 			//alert (eventStart + "   " + eventEnd + "   " + event.end);
 				       	modtitle.value = event.title;
-					    modstartdateandtime.value = eventStart;			
+					    modstartdateandtime.value = eventStart;
 					    modenddateandtime.value = eventEnd;
 					    moduid.value = event.id;
 					    eventToDeleteId = event.id;
 					    editDialog.dialog( "open" );
-				    }	
-				    
+				    }
+
 				    function saveEvent() {
 				    	var valid = true;
-				 			
+
 					 	var eventStart = moment(modstartdateandtime.value);
 				 		var eventEnd = moment(modenddateandtime.value);
-				 			
+
 					 	valid = valid && startdateandtime.value;
 					 	if(modtitle.value) {
-					 		valid = true;	
+					 		valid = true;
 					 	}
 					 	if(moved) {
 					 		valid = true;
@@ -172,8 +172,8 @@
 					 	if(!validateDateRange(eventStart, eventEnd)) {
 					 		valid = false;
 					 	}
-			
-					 	
+
+
 						if ( valid ) {
 					    	var eventData;
 					    	if (modtitle.value) {
@@ -185,12 +185,12 @@
 									account: account,
 									room: rooom
 								};
-			
+
 							}
 							$('#calendar').fullCalendar('unselect');
-				    	
+
 					    	editDialog.dialog( "close" );
-					    	
+
 					    	$.ajax({
 							    type: "PATCH",
 							    url: "/calendar/updateevent",
@@ -199,8 +199,8 @@
 							    dataType: "json",
 							    success: function(data){
 							    	if (moved) {
-							    		
-							    	} 
+
+							    	}
 						            if (modtitle.value) {
 						                var item = $("#calendar").fullCalendar( 'clientEvents', eventInEdit.id );
 						                item[0].title = modtitle.value;
@@ -217,38 +217,38 @@
 						moved = false
 					 	return valid;
 				    }
-				    
+
 				    function addEvent(start, end) {
 				      	var valid = true;
-				 			
+
 				 			var eventStart = moment(startdateandtime.value);
 				 			var eventEnd = moment(enddateandtime.value);
-				 			
-				 		
-				   
+
+
+
 						valid = valid && newtitle.value;
 					 	valid = valid && startdateandtime.value;
-					 	
+
 					 	if (validateDateRange(eventStart, eventEnd)) {
 					 		valid = !isOverlapping(eventStart, eventEnd, uid.value);
 					 	}
-					 	
+
 						if ( valid ) {
 					    	var eventData;
 							if (newtitle.value) {
 								eventData = {
 									title: newtitle.value,
 									start: eventStart,
-									end: eventEnd, 
+									end: eventEnd,
 									account: account,
 									room: rooom
 								};
 								//$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
 							}
-							
+
 							$('#calendar').fullCalendar('unselect');
 							dialog.dialog( "close" );
-				     
+
 							 $.ajax({
 							    type: "POST",
 							    url: "/calendar/addevent",
@@ -262,12 +262,12 @@
 							        alert(errMsg);
 							    }
 							});
-							 
-							 
+
+
 				      }
 				      return valid;
 				    }
-				 
+
 				    dialog = $( "#dialog-form" ).dialog({
 				      autoOpen: false,
 				      height: 900,
@@ -283,14 +283,14 @@
 				        form[ 0 ].reset();
 				      }
 				    });
-				    
+
 				    editDialog = $( "#edit-dialog-form" ).dialog({
 					      autoOpen: false,
 					      height: 900,
 					      width: 1900,
 					      modal: true,
 					      buttons: {
-					        Save: function() { 
+					        Save: function() {
 					            saveEvent();
 					        },
 					        Delete: function() {
@@ -305,18 +305,18 @@
 					        form[ 0 ].reset();
 					      }
 					    });
-				     
+
 				    form = dialog.find( "form" ).on( "submit", function( event ) {
-				      event.preventDefault();  
-				     addEvent(); 
+				      event.preventDefault();
+				     addEvent();
 				    });
-				 
+
 				    $( "#create-event" ).button().on( "click", function() {
 				      dialog.dialog( "open" );
 				    });
-				    
+
 				    $(document).ready(function() {
-				    	
+
 				    	$('#calendar').fullCalendar({
 							header: {
 								left: 'prev,next today',
@@ -353,17 +353,17 @@
 								if(event.account.userName === account.userName) {
 									event.editable = true;
 									event.durationEditable = true;
-									element.css('background-color', '#473689');
-									//element.css('opacity', '1')
+									element.css('background-color', '#006600');
 								}else{
 									event.editable = false;
 									event.durationEditable = false;
-									element.css('background-color', '#D8D8D8');
+									element.css('background-color', '#ff0000');
 									element.css('color', '#000000');
-									element.css('opacity', '.80')
+									// element.css('opacity', '.80')
 								}
-								element.find('.fc-title').append("<br/><br/>" + event.account.userName); 
-						    },
+								//element.css('opacity', '1')
+								element.find('.fc-title').append("<br \/>" + "Reserved by"+"\n"+ event.account.userName);
+							},
 							eventLimit: true, // allow "more" link when too many events
 							events: {
 						        url: '/calendar/events',
@@ -394,7 +394,7 @@
 								}
 						    },
 						    eventMouseover: function(event, jsEvent, view) {
-			
+
 						   	},
 						    eventMouseout: function(event, jsEvent, view) {
 						    },
@@ -405,12 +405,12 @@
 								eventInEdit = event;
 								var eventStart = moment(event.start).format("YYYY-MM-DDTHH:mm:ss"); //moment(event.start);
 				 				var eventEnd = moment(event.end).format("YYYY-MM-DDTHH:mm:ss");
-					 			
-					       		modtitle.value = event.title;
-						    	modstartdateandtime.value = eventStart;			
-						    	modenddateandtime.value = eventEnd;
-						    	moduid.value = event.id;
-						    
+
+								modtitle.value = event.title;
+								modstartdateandtime.value = eventStart;
+								modenddateandtime.value = eventEnd;
+								moduid.value = event.id;
+
 						    	moved = true;
 								saveEvent();
 						    },
@@ -418,12 +418,12 @@
 						    	eventInEdit = event;
 								var eventStart = moment(event.start).format("YYYY-MM-DDTHH:mm:ss"); //moment(event.start);
 				 				var eventEnd = moment(event.end).format("YYYY-MM-DDTHH:mm:ss");
-					 			
+
 					       		modtitle.value = event.title;
-						    	modstartdateandtime.value = eventStart;			
+						    	modstartdateandtime.value = eventStart;
 						    	modenddateandtime.value = eventEnd;
 						    	moduid.value = event.id;
-						    
+
 						    	moved = true;
 								saveEvent();
 						    },
@@ -436,8 +436,8 @@
 						        agenda: .5
 						    },
 							eventOverlap: false,
-							slotDuration: '00:30:00',
-							snapDuration: '00:30:00',
+							slotDuration: '01:00:00',
+							snapDuration: '01:00:00',
 							allDaySlot: false,
 							minTime: '10:00:00',
 							maxTime: '23:00:00',
@@ -447,7 +447,7 @@
 				});
 			/*]]>*/
 		</script>
-	
+
 	</head>
 
 	<body>
@@ -456,9 +456,9 @@
  			<h1 style="font-weight:bold">Reserve room: <span th:text="${room.name}"></span></h1>
         		<div class="card-panel">
 					<div id='loading'>loading...</div>
-					
+
 					<div id='calendar' style="font-size:1.7em !important; div.fc-toolbar { height:34px !important; }"></div>
-					
+
 					<div id="dialog-form" title="Add reservation" style="font-size:1.7em !important; ">
 	 					<form action="" class="material" id="event-form">
 	    					<fieldset style="border: none;">
