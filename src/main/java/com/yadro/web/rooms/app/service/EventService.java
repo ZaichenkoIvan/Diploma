@@ -69,14 +69,10 @@ public class EventService {
 
 	public Event add(Event event) {
 		Date now = new Date();
-		long data1 = now.getTime();
-		long data2 = event.getStart().getTime();
 
 		List<Event> events = eventRepository.findByDatesBetweenOr(event.getStart(), event.getEnd(), event.getRoom().getId());
 		if(events.size() == 0
-				&& (accountService.getLoggedInAccount().isAdmin() || countInAccount(accountService.getLoggedInAccount())==0)
-				&& (now.getTime() - event.getStart().getTime()) < 0
-		) {
+				&& (now.getTime() - event.getStart().getTime()) < 0) {
 			Event created = eventRepository.save(event);
 			String message = String.format(
 					"Hello %s! \n" +
