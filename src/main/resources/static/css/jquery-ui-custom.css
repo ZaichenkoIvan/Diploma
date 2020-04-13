@@ -487,13 +487,13 @@ button.ui-button::-moz-focus-inner {
 	position: relative;
 }
 .ui-dialog .ui-dialog-title {
-	float: left;
+	float: right;
 	margin: .1em 0;
 	white-space: nowrap;
 	width: 90%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	font-size:1.6em !important; 
+	font-size: 60px !important;
 }
 .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
@@ -523,8 +523,17 @@ button.ui-button::-moz-focus-inner {
 	float: right;
 }
 .ui-dialog-buttonset .ui-button-text {
-    color: #fff;
+    /*color: #fff;*/
+	font-size: 40px;
+	color: #006600 !important;
+	border-left: solid 4px #006600 !important;
+	border-right: solid 4px #006600 !important;
+	border-top: solid 4px #006600 !important;
+	border-block-end: solid 4px #006600 !important;
+	background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
+	background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px) !important;
 }
+
 .ui-dialog .ui-dialog-buttonpane button {
 	margin: .5em .4em .5em 0;
 	cursor: pointer;

@@ -50,8 +50,14 @@
 .material .material-input{
     position: relative;
     padding-top: 18px;
-    margin-bottom: 10px;
-    background:#fff;
+    margin-bottom: 25px;
+    /*text-align: center;*/
+    /*background:#fff;*/
+    background-color: #80ff80 !important;
+    border: 2px solid darkgreen !important;
+    border-radius: 4px !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
 }
 
 .material .material-input:after{
@@ -61,7 +67,8 @@
 }
 .material .material-input input, 
 .material .material-input textarea{
-    font-size: 16px;
+    font-size: 28px !important;
+    text-align: center;
     width: 100%;
     border:0;
     border-bottom: 1px solid lightgray;
@@ -76,7 +83,7 @@
 }
 
 .material .material-input input{
-    height: 32px;
+    height: 100px;
 }
 
 .material .material-input label{
@@ -141,9 +148,9 @@
 .material .material-input :focus ~ label,
 .material .material-input .filled ~ label,
 .material .error:focus ~ label{
-    color:lightgray;
-    font-size: 13px;
-    top:0;
+    /*color:lightgray;*/
+    font-size: 30px !important;
+    top:1;
     line-height: 24px;
 }
 
