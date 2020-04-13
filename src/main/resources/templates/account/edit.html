@@ -21,16 +21,16 @@
 		    						<label class="cd-label" for="cd-email">Email</label>
 									<input class="email" type="email" id="inputEmail" name="email" th:field="*{email}" required="required" />
 		    					</div>
-		    
+
 		    					<div class="icon">
 		    						<label class="cd-label" for="cd-company">Address</label>
 									<input class="company" type="text" name="company" id="cd-company" th:field="*{address}"  />
-		   						</div> 
-		    
+		   						</div>
+
 		    					<div class="icon">
 		    						<label class="cd-label" for="cd-company">Group</label>
 									<input class="company" type="text" name="cd-company" id="cd-company" th:field="*{groupName}" />
-		    					</div> 
+		    					</div>
 		    
 		    					<div class="icon">
 									<label class="cd-label" for="cd-name">Name</label>
@@ -51,7 +51,7 @@
 							</fieldset>
 
 							<fieldset>
-							
+
 								<div sec:authorize="hasRole('ROLE_ADMIN')">
 									<h4 sec:authorize="hasRole('ROLE_ADMIN')">Role</h4>
 
