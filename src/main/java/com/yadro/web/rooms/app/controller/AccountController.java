@@ -46,11 +46,6 @@ public class AccountController {
 	public String login(Account account) {
 	   return "welcome";
 	}
-
-	@RequestMapping("/registration")
-	public String registration() {
-		return "registration";
-	}
 	
 	@RequestMapping("/")
 	public String home(Map<String, Object> model) {

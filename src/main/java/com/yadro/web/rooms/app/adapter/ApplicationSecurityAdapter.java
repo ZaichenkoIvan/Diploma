@@ -41,7 +41,6 @@ public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
         .antMatchers("/room/**").access("hasRole('ROLE_ADMIN')")
         .antMatchers("/event/list/all").access("hasRole('ROLE_ADMIN')")
         .antMatchers("/assets/**").permitAll()
-        .antMatchers("/registration").permitAll()
         .antMatchers("/js/**").permitAll()
         .antMatchers("/css/**").permitAll()
         .antMatchers("/calendar/room").permitAll()
