@@ -142,8 +142,8 @@
 				    }
 
 				    function editEvent(event, elements) {
-				    	var eventStart = moment(event.start).format("YYYY-MM-DDTHH:mm:ss"); //moment(event.start);
-				 			var eventEnd = moment(event.end).format("YYYY-MM-DDTHH:mm:ss");
+				    	var eventStart = moment(event.start).format("YYYY-MM-DD  HH:mm:ss"); //moment(event.start);
+				 			var eventEnd = moment(event.end).format("YYYY-MM-DD  HH:mm:ss");
 
 				 			//alert (eventStart + "   " + eventEnd + "   " + event.end);
 				       	modtitle.value = event.title;
@@ -318,26 +318,36 @@
 				    $(document).ready(function() {
 
 				    	$('#calendar').fullCalendar({
+							firstDay: 1,
 							header: {
 								left: 'prev,next today',
 								center: 'title',
-								right: 'weekDays,weekEnds,agendaDay'
+								right: 'weekDays, agendaDay'
+							},
+							monthNamesShort :['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+							dayNamesShort: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+							buttonText: {
+								prev: "PREV",
+								next: "NEXT",
+								today: "now",
+								week: "7 DAY",
+								day: "1 DAY"
 							},
 						    views: {
-						        agendaFourDay: {
-						            type: 'agenda',
-						            duration: { days: 5 },
-						            buttonText: '4 day'
-						        },
+						        // agendaFourDay: {
+						        //     type: 'agenda',
+						        //     duration: { days: 5 },
+						        //     buttonText: '4 day'
+						        // },
 								weekDays: {
-						        	buttonText: 'week',
-									type: 'agendaWeek',
-							        hiddenDays: [0, 6]
-							    },
-						        weekEnds: {
-						        	buttonText: 'weekend  !important',
-						        	type: 'agendaWeek',
-							        hiddenDays: [1, 2, 3, 4, 5]
+						        	buttonText: '7 days',
+									type: 'agendaWeek'
+							        // hiddenDays: [0, 14]
+							    // },
+						        // weekEnds: {
+						        // 	buttonText: 'weekend  !important',
+						        // 	type: 'agendaWeek',
+							    //     hiddenDays: [1, 2, 3, 4, 5]
 							    }
 						    },
 							defaultDate: moment().format("YYYY-MM-DD"),
