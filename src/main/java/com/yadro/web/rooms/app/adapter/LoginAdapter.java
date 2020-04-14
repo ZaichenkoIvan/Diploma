@@ -10,7 +10,7 @@ import org.springframework.security.authentication.event.InteractiveAuthenticati
 public class LoginAdapter implements ApplicationListener<InteractiveAuthenticationSuccessEvent> {
     @Autowired
     private AccountService accountService;
-    
+
     @Override
     public void onApplicationEvent(InteractiveAuthenticationSuccessEvent event) {
         accountService.updateLastLogin(event.getAuthentication().getName());

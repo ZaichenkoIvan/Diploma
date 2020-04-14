@@ -13,7 +13,8 @@ public class MvcAdapter extends WebMvcConfigurerAdapter {
         return new ViewInterceptorAdapter();
     }
 
-    public @Override void addInterceptors(InterceptorRegistry registry) {
+    public @Override
+    void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(viewInterceptor());
     }
 }

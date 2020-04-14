@@ -1,5 +1,6 @@
 package com.yadro.web.rooms.app.adapter;
 
+import com.yadro.web.rooms.app.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -11,13 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.yadro.web.rooms.app.service.AccountService;
-
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
-//    @Autowired
-//    private SecurityProperties security;
 
     @Autowired
     private AccountService accountService;

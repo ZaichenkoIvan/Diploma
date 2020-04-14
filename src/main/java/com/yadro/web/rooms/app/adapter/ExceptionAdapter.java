@@ -1,7 +1,7 @@
 package com.yadro.web.rooms.app.adapter;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.yadro.web.rooms.app.model.Account;
+import com.yadro.web.rooms.app.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yadro.web.rooms.app.model.Account;
-import com.yadro.web.rooms.app.service.AccountService;
+import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 class ExceptionAdapter {
-    
+
     @Autowired
     AccountService accountService;
-    
+
     public static final String DEFAULT_ERROR_VIEW = "error";
 
     @ExceptionHandler(value = Exception.class)
@@ -37,7 +36,7 @@ class ExceptionAdapter {
         mav.addObject("url", req.getRequestURL());
         mav.addObject("account", account);
         mav.setViewName(DEFAULT_ERROR_VIEW);
-        
+
         e.printStackTrace();
         return mav;
     }

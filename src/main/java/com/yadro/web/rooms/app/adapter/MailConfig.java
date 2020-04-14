@@ -30,7 +30,7 @@ public class MailConfig {
     private String debug;
 
     @Bean
-    public JavaMailSender getMailSender(){
+    public JavaMailSender getMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost(host);
@@ -40,7 +40,7 @@ public class MailConfig {
 
         Properties properties = mailSender.getJavaMailProperties();
 
-        properties.setProperty("mail.transport.protocol",protocol);
+        properties.setProperty("mail.transport.protocol", protocol);
         properties.setProperty("mail.debug", debug);
 
         return mailSender;
