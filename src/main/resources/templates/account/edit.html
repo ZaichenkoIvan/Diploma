@@ -48,6 +48,10 @@
 									<a href="#0" class="hide-password">Show</a>
 								</p>
 
+								<div>
+									<input class="full-width" type="submit" value="Save" />
+								</div>
+
 							</fieldset>
 
 							<fieldset>
@@ -78,10 +82,6 @@
 								<input sec:authorize="hasRole('ROLE_USER')" type="hidden" th:field="*{university.id}" />
 								<input sec:authorize="hasRole('ROLE_ADMIN')" type="hidden" th:field="*{userName}"/>
             					<input type="hidden" th:field="*{id}"/>
-            					
-								<div>
-		      						<input class="full-width" type="submit" value="Save" />
-		    					</div>
 
 							</fieldset>
 							  
