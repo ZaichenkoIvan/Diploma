@@ -76,13 +76,16 @@ public class EventService {
 			Event created = eventRepository.save(event);
 			String message = String.format(
 					"Hello %s! \n" +
-							"You book room %s on this time : %s to %s.",
+							"%s since %s to %s was reserved by you. \n" +
+							"Have a nice day! \n\n\n" +
+							"Best wishes,\n" +
+							"Team 'Hostel Activity'",
 					accountService.getLoggedInAccount().getFirstName(),
 					created.getRoom().getName(),
 					created.getStart(),
 					created.getEnd()
 			);
-			mailService.send(created.getAccount().getEmail(), "Book room", message);
+			mailService.send(created.getAccount().getEmail(), "Reserved room in hostel", message);
 			accountRepository.updateCountEvent(accountService.getLoggedInAccount().getUserName(), countInAccount(accountService.getLoggedInAccount()));
 			return created;
 		}else{
@@ -95,13 +98,16 @@ public class EventService {
 		if(events.size() == 0) {
 			String message = String.format(
 					"Hello %s! \n" +
-							"Your booking of room was UPDATE from %s on this time : %s to %s.",
+							"%s since %s to %s was updated. \n" +
+							"Have a nice day! \n\n\n" +
+							"Best wishes,\n" +
+							"Team 'Hostel Activity'",
                     accountService.getLoggedInAccount().getFirstName(),
 					event.getRoom().getName(),
 					event.getStart(),
 					event.getEnd()
 			);
-			mailService.send(event.getAccount().getEmail(), "Update booking of room", message);
+			mailService.send(event.getAccount().getEmail(), "Update reserve room in hostel", message);
 			return eventRepository.save(event);
 		}else{
 			return null;
@@ -112,13 +118,16 @@ public class EventService {
 		Event event = eventRepository.findById(id);
 		String message = String.format(
 				"Hello %s! \n" +
-						"Your booking of room %s on this time : %s to %s was DELETE",
+						"%s since %s to %s was deleted. \n" +
+						"Have a nice day! \n\n\n" +
+						"Best wishes,\n" +
+						"Team 'Hostel Activity'",
                 accountService.getLoggedInAccount().getFirstName(),
 				event.getRoom().getName(),
 				event.getStart(),
 				event.getEnd()
 		);
-		mailService.send(event.getAccount().getEmail(), "Delete booking of room", message);
+		mailService.send(event.getAccount().getEmail(), "Delete reserve room in hostel", message);
         this.eventRepository.delete(id);
         return true;
     }
